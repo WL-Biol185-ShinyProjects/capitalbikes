@@ -1,0 +1,37 @@
+---
+title: "station-map"
+author: "Daniel"
+date: "10/16/2024"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(sf)
+library(sfheaders)
+library(leaflet)
+
+# Convert df to sf
+df_sf = st_as_sf(x = df,                         
+           coords = c("X", "Y"),
+           crs = 2271)
+
+# Reproject to WGS84
+df_sf = st_transform(df_sf , 4326)
+df_sf = sf_to_df(rocks_wgs_sf, fill = T) 
+
+# Create the map
+map_data = df
+map_data$popup = paste("<b>Location #: </b>", map_data$Point,
+                       "<br>", "<b>LONGITUDE: </b>", map_data$X,
+                    "<br>", "<b>LATITUDE: </b>", map_data$Y,
+                    "<br>", "<b>Stations </b>", map_data$Name)
+                    
+                    
+leaflet(map_data, width = "100%") %>% addTiles() %>%
+  addTiles(group = "OSM (default)") %>%
+  addProviderTiles(provider = "Esri.WorldStreetMap",group = "World StreetMap") %>%
+  addProviderTiles(provider = "Esri.WorldImagery",group = "World Imagery") %>%
+  addMarkers(lng = ~X, lat = ~Y, popup = map_data$popup, clusterOptions = markerClusterOptions())
+```
+
