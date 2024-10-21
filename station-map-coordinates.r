@@ -1,8 +1,13 @@
-library(sf)
+# for loading our data
+library(readr)
+# for plotting
+library(leaflet)
 
-data = read.csv("2023-station-coordinates.csv", as.is=T)
 
-points = st_as_sf(data, coords = c("LONGITUDE", "LATITUDE"), crs = 4326)
+stations <- read.csv("2023-station-coordinates.csv")
 
-plot(st_geometry(points), pch=16, col="red")
+leaflet(data = stations) %>%
+  addTiles() %>%
+  addMarkers(popup = ~NAME, lng = ~LONGITUDE, lat = ~LATITUDE)
 
+leaflet()
