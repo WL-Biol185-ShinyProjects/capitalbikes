@@ -37,7 +37,7 @@ View(cleanedbikesweather)
 
 
 ```{r}
-cleanedbikesweather
-"none" <- NA
+library(ggplot2)
+ggplot(cleanedbikesweather, aes(precip, humidity)) +geom_point()
 ```
 
