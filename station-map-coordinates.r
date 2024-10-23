@@ -1,5 +1,4 @@
 # for loading our data
-library(readr)
 # for plotting
 library(leaflet)
 
