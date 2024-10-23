@@ -1,0 +1,43 @@
+---
+title: "cleanweather"
+output: html_document
+---
+```{r}
+data <- read.csv("bikesweather.csv")
+cleaned_data <- data[-c(2, 977),]
+cleaned_data <- data[-c(1342, 1624)]
+```
+
+cleaned weather so that it is just columns from 2023, now named "cleanedbikesweather.csv"
+
+```{r}
+cleanedbikesweather$dew <- NULL
+View(cleanedbikesweather)
+```
+
+Deleted dew column from cleanedbikesweather
+
+```{r}
+cleanedbikesweather$feelslike <- NULL
+cleanedbikesweather$feelslikemin <- NULL
+cleanedbikesweather$feelslikemax <- NULL
+cleanedbikesweather$snow <- NULL
+cleanedbikesweather$snowdepth <- NULL
+cleanedbikesweather$solarradiation <- NULL
+cleanedbikesweather$solarenergy <- NULL
+cleanedbikesweather$windgust <- NULL
+cleanedbikesweather$windspeed <- NULL
+cleanedbikesweather$winddir <- NULL
+cleanedbikesweather$sealevelpressure <- NULL
+cleanedbikesweather$severerisk <- NULL
+cleanedbikesweather$name <- NULL
+cleanedbikesweather$precipprob <- NULL
+View(cleanedbikesweather)
+```
+
+
+```{r}
+cleanedbikesweather
+"none" <- NA
+```
+
