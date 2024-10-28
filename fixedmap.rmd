@@ -15,10 +15,12 @@ stations <- read.csv("2023-station-coordinates.csv")
 
 leaflet(data = stations) %>%
   addTiles() %>%
-  addMarkers(popup = ~NAME, lng = ~LONGITUDE, lat = ~LATITUDE, clusterOptions = markerClusterOptions())
-
-             
-leaflet()
+  addProviderTiles(provider = providers$Esri.WorldImagery, group = "Satellite") %>%
+  addTiles(group = "Street") %>%
+  addMarkers(popup = ~NAME, lng = ~LONGITUDE, lat = ~LATITUDE, group = "Markers") %>%
+  addLayersControl(baseGroups = c("Streets", "Satellite"), overlayGroups = c("Markers"),
+                   position = "topright")
+        
 
 ```
 

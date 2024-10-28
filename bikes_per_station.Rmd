@@ -1,0 +1,24 @@
+---
+title: "bikes_per_station"
+output: html_document
+---
+
+
+#Cleaning number of bikes per station data
+
+```{r}
+
+library(tidyverse)
+
+bikes_per_station <- read.csv("2023-station-coordinates.csv")
+
+colnames(bikes_per_station) <- tolower(colnames(bikes_per_station))
+
+bike_numbers <- bikes_per_station %>%
+  select(name, num_bikes_available, num_ebikes_available, latitude, longitude)
+  
+  
+```
+
+
+
