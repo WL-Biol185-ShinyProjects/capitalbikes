@@ -1,0 +1,19 @@
+---
+title: "frequently_used_stations"
+output: html_document
+---
+
+#Determining what stations are used most frequently
+
+```{r}
+
+
+tripdata_202301 <- read.csv("202301-capitalbikeshare-tripdata.csv")
+ tripdata_202301 %>%
+   count(start_station_name, sort = TRUE)
+ 
+```
+
+
+
+
