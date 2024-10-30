@@ -1,0 +1,141 @@
+---
+title: "cleanweather"
+output: html_document
+---
+```{r}
+
+```
+
+cleaned weather so that it is just columns from 2023, now named "cleanedbikesweather.csv"
+
+```{r}
+cleanedbikesweather$dew <- NULL
+View(cleanedbikesweather)
+```
+
+Deleted dew column from cleanedbikesweather
+
+```{r}
+cleanedbikesweather$feelslike <- NULL
+cleanedbikesweather$feelslikemin <- NULL
+cleanedbikesweather$feelslikemax <- NULL
+cleanedbikesweather$snow <- NULL
+cleanedbikesweather$snowdepth <- NULL
+cleanedbikesweather$solarradiation <- NULL
+cleanedbikesweather$solarenergy <- NULL
+cleanedbikesweather$windgust <- NULL
+cleanedbikesweather$windspeed <- NULL
+cleanedbikesweather$winddir <- NULL
+cleanedbikesweather$sealevelpressure <- NULL
+cleanedbikesweather$severerisk <- NULL
+cleanedbikesweather$name <- NULL
+cleanedbikesweather$precipprob <- NULL
+View(cleanedbikesweather)
+```
+
+```{r}
+write.csv(cleanedbikesweather, file = "cleanedbikesweather.csv")
+```
+
+
+```{r}
+library(ggplot2)
+ggplot(cleanedbikesweather, aes(precip, humidity)) +geom_point()
+```
+```{r}
+View(202301-capitalbikeshare-tripdata)
+data <- read.csv("202301-capitalbikeshare-tripdata.csv")
+```
+```{r}
+old_name <- "202301-capitalbikeshare-tripdata.csv"  
+new_name <- "janbikedata.csv"
+```
+
+```{r}
+janbikedata$ride_id <- NULL
+janbikedata$rideable_type <- NULL
+janbikedata$member_casual <- NULL
+View(janbikedata)
+```
+
+```{r}
+write.csv(janbikedata.csv, file = "janbikedataclean")
+```
+
+
+```{r}
+febbikedata$ride_id <- NULL
+febbikedata$rideable_type <- NULL
+febbikedata$member_casual <- NULL
+View(febbikedata)
+```
+
+```{r}
+marchbikedata$ride_id <- NULL
+marchbikedata$rideable_type <- NULL
+marchbikedata$member_casual <- NULL
+View(marchbikedata.csv)
+```
+```{r}
+aprilbikedata$ride_id <- NULL
+aprilbikedata$rideable_type <- NULL
+aprilbikedata$member_casual <- NULL
+View(aprilbikedata)
+```
+
+```{r}
+maybikedata$ride_id <- NULL
+maybikedata$rideable_type <- NULL
+maybikedata$member_casual <- NULL
+View(maybikedata)
+```
+
+```{r}
+junebikedata$ride_id <- NULL
+junebikedata$rideable_type <- NULL
+junebikedata$member_casual <- NULL
+View(junebikedata)
+```
+
+```{r}
+julybikedata$ride_id <- NULL
+julybikedata$rideable_type <- NULL
+julybikedata$member_casual <- NULL
+View(julybikedata)
+```
+
+```{r}
+augbikedata$ride_id <- NULL
+augbikedata$rideable_type <- NULL
+augbikedata$member_casual <- NULL
+View(augbikedata)
+```
+
+```{r}
+septbikedata$ride_id <- NULL
+septbikedata$rideable_type <- NULL
+septbikedata$member_casual <- NULL
+View(septbikedata)
+```
+
+```{r}
+octbikedata$ride_id <- NULL
+octbikedata$rideable_type <- NULL
+octbikedata$member_casual <- NULL
+View(octbikedata)
+```
+
+```{r}
+novbikedata$ride_id <- NULL
+novbikedata$rideable_type <- NULL
+novbikedata$member_casual <- NULL
+View(novbikedata)
+```
+
+```{r}
+decbikedata$ride_id <- NULL
+decbikedata$rideable_type <- NULL
+decbikedata$member_casual <- NULL
+View(decbikedata)
+```
+
