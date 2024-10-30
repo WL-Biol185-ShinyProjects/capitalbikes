@@ -5,6 +5,9 @@ output: html_document
 
 #Determining what stations are used most frequently
 
+
+#202301 frequency
+
 ```{r}
 
 
@@ -15,5 +18,14 @@ tripdata_202301 <- read.csv("202301-capitalbikeshare-tripdata.csv")
 ```
 
 
+#202302 frequency
+
+```{r}
+
+tripdata_202302 <- read.csv("202302-captialbikeshare-tripdata.csv")
+ tripdata_202302 %>%
+   count(start_station_name, sort = TRUE)
+ 
+```
 
 
