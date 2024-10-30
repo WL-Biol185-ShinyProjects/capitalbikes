@@ -68,19 +68,24 @@ febbikedata$ride_id <- NULL
 febbikedata$rideable_type <- NULL
 febbikedata$member_casual <- NULL
 View(febbikedata)
+
 ```
 
 ```{r}
-marchbikedata$ride_id <- NULL
-marchbikedata$rideable_type <- NULL
-marchbikedata$member_casual <- NULL
-View(marchbikedata.csv)
+marbikedata$ride_id <- NULL
+marbikedata$rideable_type <- NULL
+marbikedata$member_casual <- NULL
+View(marbikedata.csv)
+
+write.csv(marbikedata, file= "~/BIO185Evs/marbikedataclean.csv")
 ```
 ```{r}
 aprilbikedata$ride_id <- NULL
 aprilbikedata$rideable_type <- NULL
 aprilbikedata$member_casual <- NULL
 View(aprilbikedata)
+
+write.csv(aprilbikedata, file= "~/BIO185Evs/aprilbikedataclean.csv")
 ```
 
 ```{r}
@@ -88,6 +93,8 @@ maybikedata$ride_id <- NULL
 maybikedata$rideable_type <- NULL
 maybikedata$member_casual <- NULL
 View(maybikedata)
+
+write.csv(maybikedata, file= "~/BIO185Evs/maybikedataclean.csv")
 ```
 
 ```{r}
@@ -95,6 +102,8 @@ junebikedata$ride_id <- NULL
 junebikedata$rideable_type <- NULL
 junebikedata$member_casual <- NULL
 View(junebikedata)
+
+write.csv(junebikedata, file= "~/BIO185Evs/junebikedataclean.csv")
 ```
 
 ```{r}
@@ -102,6 +111,8 @@ julybikedata$ride_id <- NULL
 julybikedata$rideable_type <- NULL
 julybikedata$member_casual <- NULL
 View(julybikedata)
+
+write.csv(julybikedata, file= "~/BIO185Evs/julybikedataclean.csv")
 ```
 
 ```{r}
@@ -109,6 +120,8 @@ augbikedata$ride_id <- NULL
 augbikedata$rideable_type <- NULL
 augbikedata$member_casual <- NULL
 View(augbikedata)
+
+write.csv(augbikedata, file= "~/BIO185Evs/augbikedataclean.csv")
 ```
 
 ```{r}
@@ -116,6 +129,8 @@ septbikedata$ride_id <- NULL
 septbikedata$rideable_type <- NULL
 septbikedata$member_casual <- NULL
 View(septbikedata)
+
+write.csv(septbikedata, file= "~/BIO185Evs/septbikedataclean.csv")
 ```
 
 ```{r}
@@ -123,6 +138,8 @@ octbikedata$ride_id <- NULL
 octbikedata$rideable_type <- NULL
 octbikedata$member_casual <- NULL
 View(octbikedata)
+
+write.csv(octbikedata, file= "~/BIO185Evs/octbikedataclean.csv")
 ```
 
 ```{r}
@@ -130,6 +147,8 @@ novbikedata$ride_id <- NULL
 novbikedata$rideable_type <- NULL
 novbikedata$member_casual <- NULL
 View(novbikedata)
+
+write.csv(novbikedata, file= "~/BIO185Evs/novbikedataclean.csv")
 ```
 
 ```{r}
@@ -137,5 +156,29 @@ decbikedata$ride_id <- NULL
 decbikedata$rideable_type <- NULL
 decbikedata$member_casual <- NULL
 View(decbikedata)
+
+write.csv(decbikedata, file= "~/BIO185Evs/decbikedataclean.csv")
 ```
+ 
+
+```{r}
+library(dplyr)
+library(lubridate)
+
+data <- read.csv("febbikedataclean.csv")                                                                                                                                                                                                    
+
+data$started_at <- ymd_hms(data$started_at)  
+data$ended_at <- ymd_hms(data$ended_at)    
+
+
+data <- data %>%
+  mutate(time_difference = as.numeric(difftime(ended_at, started_at, units = "mins")))
+
+print(head(data))
+
+write.csv(data, "febbikedataclean_updated.csv", row.names = FALSE)
+
+```
+
+
 
