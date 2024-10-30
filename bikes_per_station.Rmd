@@ -16,7 +16,9 @@ colnames(bikes_per_station) <- tolower(colnames(bikes_per_station))
 
 bike_numbers <- bikes_per_station %>%
   select(name, num_bikes_available, num_ebikes_available, latitude, longitude)
-  
+
+write.csv(bike_numbers, file = "~/fixedcapitalbikes/bike_numbers.csv")
+
   
 ```
 

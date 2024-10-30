@@ -1,0 +1,49 @@
+---
+title: "testcolormap.Rmd"
+author: "Daniel"
+date: "10/30/2024"
+output: html_document
+---
+
+```{r}
+# Load libraries
+library(leaflet)
+library(dplyr)
+
+# Read data
+stations <- read.csv("bike_numbers.csv")
+
+# Define size and color functions
+
+# & for setting range
+# && if vector and want overall TRUE/FALSE not TRUE/FALSES the length of the vector
+
+get_marker_color <- function(num_bikes_available) {
+  if (num_bikes_available <= 12) {
+    return("red")
+  } else if (num_bikes_available >12 & num_bikes_available <= 20) {
+    return("orange")
+  } else {
+    return("green")
+  }
+}
+
+get_marker_size <- function(num_bikes_available) {
+  return(num_bikes_available * 10)  # Example scaling
+}
+
+
+# Create leaflet map
+leaflet(stations) %>%
+  addTiles() %>%
+  addCircles(
+    lng = ~longitude,
+    lat = ~latitude,
+    radius = ~get_marker_size(num_bikes_available),
+    color = ~get_marker_color(num_bikes_available),
+    stroke = FALSE,
+    fillOpacity = 0.5
+  )
+
+```
+

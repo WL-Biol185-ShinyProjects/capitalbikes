@@ -5,7 +5,40 @@ date: "10/21/2024"
 output: html_document
 ---
 
+# for loading our data
+# for plotting
+library(leaflet)
+install.packages('gmapsdistance')
+library(gmapsdistance)
+library(stringr)
+library(dplyr)
+
+
+stations <- read.csv("2023-station-coordinates.csv")
+
+leaflet(data = stations) %>%
+  addTiles() %>%
+  addProviderTiles(provider = providers$Esri.WorldImagery, group = "Satellite") %>%
+  addTiles(group = "Street") %>%
+  addMarkers(popup = ~NAME, lng = ~LONGITUDE, lat = ~LATITUDE, group = "Markers") %>%
+  addLayersControl(baseGroups = c("Streets", "Satellite"), overlayGroups = c("Markers"),
+                   position = "topright")
+        
+
+#replace the “,” with a “+”
+stations$location <- str_replace(stationsC$Location.1, “,”, “+”)
+
+#create a column with our starting ponts
+stations$start<- c(‘38.9072+-77.0369’)
+
+#create orgin and destinations
+origin = stations$start
+destination = stations$location
+
+
+
 ```{r}
+
 # for loading our data
 # for plotting
 library(leaflet)
@@ -23,4 +56,5 @@ leaflet(data = stations) %>%
         
 
 ```
+
 
