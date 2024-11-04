@@ -46,6 +46,7 @@ ggplot(cleanedbikesweather, aes(precip, humidity)) +geom_point()
 View(202301-capitalbikeshare-tripdata)
 data <- read.csv("202301-capitalbikeshare-tripdata.csv")
 ```
+
 ```{r}
 old_name <- "202301-capitalbikeshare-tripdata.csv"  
 new_name <- "janbikedata.csv"
@@ -61,6 +62,25 @@ View(janbikedata)
 ```{r}
 write.csv(janbikedata.csv, file = "janbikedataclean")
 ```
+```{r}
+
+library(dplyr)
+library(lubridate)
+
+data <- read.csv("janbikedataclean.csv")                                                                                                                                                                                                    
+
+data$started_at <- ymd_hms(data$started_at)  
+data$ended_at <- ymd_hms(data$ended_at)    
+
+
+data <- data %>%
+  mutate(time_difference = as.numeric(difftime(ended_at, started_at, units = "mins")))
+
+print(head(data))
+
+write.csv(data, "janbikedataclean_updated.csv", row.names = FALSE)
+```
+
 
 
 ```{r}
@@ -77,42 +97,131 @@ marbikedata$rideable_type <- NULL
 marbikedata$member_casual <- NULL
 View(marbikedata.csv)
 
-write.csv(marbikedata, file= "~/BIO185Evs/marbikedataclean.csv")
+write.csv(marbikedata, file = "marbikedataclean.csv")
+
 ```
+
+```{r}
+library(dplyr)
+library(lubridate)
+
+data <- read.csv("marbikedataclean.csv")                                                                                                                                                                                                    
+
+data$started_at <- ymd_hms(data$started_at)  
+data$ended_at <- ymd_hms(data$ended_at)    
+
+
+data <- data %>%
+  mutate(time_difference = as.numeric(difftime(ended_at, started_at, units = "mins")))
+
+print(head(data))
+
+write.csv(data, "marbikedataclean_updated.csv", row.names = FALSE)
+```
+
 ```{r}
 aprilbikedata$ride_id <- NULL
 aprilbikedata$rideable_type <- NULL
 aprilbikedata$member_casual <- NULL
 View(aprilbikedata)
 
-write.csv(aprilbikedata, file= "~/BIO185Evs/aprilbikedataclean.csv")
+write.csv(aprilbikedata, file = "aprilbikedataclean.csv")
 ```
+
+```{r}
+library(dplyr)
+library(lubridate)
+
+data <- read.csv("aprilbikedataclean.csv")                                                                                                                                                                                                    
+
+data$started_at <- ymd_hms(data$started_at)  
+data$ended_at <- ymd_hms(data$ended_at)    
+
+
+data <- data %>%
+  mutate(time_difference = as.numeric(difftime(ended_at, started_at, units = "mins")))
+
+print(head(data))
+
+write.csv(data, "aprilbikedataclean_updated.csv", row.names = FALSE)
+```
+
 
 ```{r}
 maybikedata$ride_id <- NULL
 maybikedata$rideable_type <- NULL
 maybikedata$member_casual <- NULL
+maybikedata$start_lat <- NULL
+maybikedata$end_lat <- NULL
+maybikedata$start_lng <- NULL
+maybikedata$end_lng <- NULL
 View(maybikedata)
 
-write.csv(maybikedata, file= "~/BIO185Evs/maybikedataclean.csv")
+write.csv(maybikedata, file = "maybikedataclean.csv")
 ```
+
+```{r}
+library(dplyr)
+library(lubridate)
+
+data <- read.csv("maybikedataclean.csv")                                                                                                                                                                                                    
+
+data$started_at <- ymd_hms(data$started_at)  
+data$ended_at <- ymd_hms(data$ended_at)    
+
+
+data <- data %>%
+  mutate(time_difference = as.numeric(difftime(ended_at, started_at, units = "mins")))
+
+print(head(data))
+
+write.csv(data, "maybikedataclean_updated.csv", row.names = FALSE)
+```
+
 
 ```{r}
 junebikedata$ride_id <- NULL
 junebikedata$rideable_type <- NULL
 junebikedata$member_casual <- NULL
-View(junebikedata)
+junebikedata$start_lat <- NULL
+junebikedata$end_lat <- NULL
+junebikedata$start_lng <- NULL
+junebikedata$end_lng <- NULL
 
-write.csv(junebikedata, file= "~/BIO185Evs/junebikedataclean.csv")
+
+write.csv(junebikedata, file = "junebikedataclean.csv")
 ```
+
+```{r}
+library(dplyr)
+library(lubridate)
+
+data <- read.csv("junebikedataclean.csv")                                                                                                                                                                                                    
+
+data$started_at <- ymd_hms(data$started_at)  
+data$ended_at <- ymd_hms(data$ended_at)    
+
+
+data <- data %>%
+  mutate(time_difference = as.numeric(difftime(ended_at, started_at, units = "mins")))
+
+print(head(data))
+
+write.csv(data, "junebikedataclean_updated.csv", row.names = FALSE)
+```
+
 
 ```{r}
 julybikedata$ride_id <- NULL
 julybikedata$rideable_type <- NULL
 julybikedata$member_casual <- NULL
-View(julybikedata)
+julybikedata$start_lat <- NULL
+julybikedata$end_lat <- NULL
+julybikedata$start_lng <- NULL
+julybikedata$end_lng <- NULL
 
-write.csv(julybikedata, file= "~/BIO185Evs/julybikedataclean.csv")
+
+write.csv(julybikedata, file = "julybikedataclean.csv")
 ```
 
 ```{r}
