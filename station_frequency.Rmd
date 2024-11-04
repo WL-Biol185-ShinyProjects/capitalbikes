@@ -6,10 +6,17 @@ output: html_document
 #Determining what stations are used most frequently
 
 
+```{r}
+
+library(tidyverse)
+
+```
+
+
+
 #202301 frequency
 
 ```{r}
-
 
 tripdata_202301 <- read.csv("202301-capitalbikeshare-tripdata.csv")
  tripdata_202301 %>%
@@ -22,10 +29,76 @@ tripdata_202301 <- read.csv("202301-capitalbikeshare-tripdata.csv")
 
 ```{r}
 
-tripdata_202302 <- read.csv("202302-captialbikeshare-tripdata.csv")
+tripdata_202302 <- read.csv("202302-capitalbikeshare-tripdata.csv")
  tripdata_202302 %>%
    count(start_station_name, sort = TRUE)
  
 ```
 
+
+#202303 frequency
+
+```{r}
+
+tripdata_202303 <- read.csv("202303-capitalbikeshare-tripdata.csv")
+ tripdata_202303 %>%
+   count(start_station_name, sort = TRUE)
+
+```
+
+
+#202304 frequency
+
+```{r}
+
+tripdata_202304 <- read.csv("202304-capitalbikeshare-tripdata.csv")
+ tripdata_202304 %>%
+   count(start_station_name, sort = TRUE)
+
+```
+
+
+
+#202305 frequency
+
+```{r}
+
+tripdata_202305 <- read.csv("202305-capitalbikeshare-tripdata.csv")
+ tripdata_202305 %>%
+   count(start_station_name, sort = TRUE)
+
+```
+
+
+#202306 frequency
+
+```{r}
+
+tripdata_202306 <- read.csv("202306-capitalbikeshare-tripdata.csv")
+ tripdata_202306 %>%
+   count(start_station_name, sort = TRUE)
+
+```
+
+
+#202307 frequency
+
+```{r}
+
+tripdata_202307 <- read.csv("202307-capitalbikeshare-tripdata.csv")
+ tripdata_202307 %>%
+   count(start_station_name, sort = TRUE)
+
+```
+
+
+#202308 frequency
+
+```{r}
+
+tripdata_202308 <- read.csv("202308-capitalbikeshare-tripdata.csv")
+ tripdata_202308 %>%
+   count(start_station_name, sort = TRUE)
+
+```
 
