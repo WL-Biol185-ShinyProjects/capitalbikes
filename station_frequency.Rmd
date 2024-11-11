@@ -19,9 +19,9 @@ library(tidyverse)
 ```{r}
 
 tripdata_202301 <- readRDS("monthly-data/janbikedata.rds")
- tripdata_202301 %>%
+ station_counts <- tripdata_202301 %>%
    count(start_station_name, sort = TRUE)
- saveRDS(data, file = "202301_station_freq.rds")
+ saveRDS(station_counts, file = "202301_station_freq.rds")
  
  
 ```
@@ -32,9 +32,9 @@ tripdata_202301 <- readRDS("monthly-data/janbikedata.rds")
 ```{r}
 
 tripdata_202302 <- readRDS("monthly-data/febbikedata.rds")
- tripdata_202302 %>%
+ station_counts <- tripdata_202302 %>%
    count(start_station_name, sort = TRUE)
- saveRDS(data, file = "202302_station_freq.rds")
+ saveRDS(station_counts, file = "202302_station_freq.rds")
  
 ```
 
@@ -44,9 +44,9 @@ tripdata_202302 <- readRDS("monthly-data/febbikedata.rds")
 ```{r}
 
 tripdata_202303 <- readRDS("monthly-data/marbikedata.rds")
- tripdata_202303 %>%
+ station_counts <- tripdata_202303 %>%
    count(start_station_name, sort = TRUE)
- saveRDS(data, file = "202303_station_freq.rds")
+ saveRDS(station_counts, file = "202303_station_freq.rds")
 
 ```
 
@@ -56,9 +56,9 @@ tripdata_202303 <- readRDS("monthly-data/marbikedata.rds")
 ```{r}
 
 tripdata_202304 <- readRDS("monthly-data/aprilbikedata.rds")
- tripdata_202304 %>%
+ station_counts <- tripdata_202304 %>%
    count(start_station_name, sort = TRUE)
- saveRDS(data, file = "202304_station_freq.rds")
+ saveRDS(station_counts, file = "202304_station_freq.rds")
 
 ```
 
@@ -69,9 +69,9 @@ tripdata_202304 <- readRDS("monthly-data/aprilbikedata.rds")
 ```{r}
 
 tripdata_202305 <- readRDS("monthly-data/maybikedata.rds")
- tripdata_202305 %>%
+ station_counts <- tripdata_202305 %>%
    count(start_station_name, sort = TRUE)
- saveRDS(data, file = "202305_station_freq.rds")
+ saveRDS(station_counts, file = "202305_station_freq.rds")
 
 ```
 
@@ -81,9 +81,9 @@ tripdata_202305 <- readRDS("monthly-data/maybikedata.rds")
 ```{r}
 
 tripdata_202306 <- readRDS("monthly-data/junebikedata.rds")
- tripdata_202306 %>%
+ station_counts <- tripdata_202306 %>%
    count(start_station_name, sort = TRUE)
- saveRDS(data, file = "202306_station_freq.rds")
+ saveRDS(station_counts, file = "202306_station_freq.rds")
 
 ```
 
@@ -93,9 +93,9 @@ tripdata_202306 <- readRDS("monthly-data/junebikedata.rds")
 ```{r}
 
 tripdata_202307 <- readRDS("monthly-data/julybikedata.rds")
- tripdata_202307 %>%
+ station_counts <- tripdata_202307 %>%
    count(start_station_name, sort = TRUE)
- saveRDS(data, file = "202307_station_freq.rds")
+ saveRDS(station_counts, file = "202307_station_freq.rds")
 
 ```
 
@@ -105,9 +105,9 @@ tripdata_202307 <- readRDS("monthly-data/julybikedata.rds")
 ```{r}
 
 tripdata_202308 <- readRDS("monthly-data/augbikedata.rds")
- tripdata_202308 %>%
+ station_counts <- tripdata_202308 %>%
    count(start_station_name, sort = TRUE)
- saveRDS(data, file = "202308_station_freq.rds")
+ saveRDS(station_counts, file = "202308_station_freq.rds")
 
 ```
 
@@ -117,9 +117,9 @@ tripdata_202308 <- readRDS("monthly-data/augbikedata.rds")
 ```{r}
 
 tripdata_202309 <- readRDS("monthly-data/septbikedata.rds")
- tripdata_202309 %>%
+ station_counts <- tripdata_202309 %>%
    count(start_station_name, sort = TRUE)
- saveRDS(data, file = "202309_station_freq.rds")
+ saveRDS(station_counts, file = "202309_station_freq.rds")
 
 ```
 
@@ -129,9 +129,9 @@ tripdata_202309 <- readRDS("monthly-data/septbikedata.rds")
 ```{r}
 
 tripdata_202310 <- readRDS("monthly-data/octbikedata.rds")
- tripdata_202310 %>%
+ station_counts <- tripdata_202310 %>%
    count(start_station_name, sort = TRUE)
- saveRDS(data, file = "202310_station_freq.rds")
+ saveRDS(station_counts, file = "202310_station_freq.rds")
 
 ```
 
@@ -141,9 +141,9 @@ tripdata_202310 <- readRDS("monthly-data/octbikedata.rds")
 ```{r}
 
 tripdata_202311 <- readRDS("monthly-data/novbikedata.rds")
- tripdata_202311 %>%
+ station_counts <- tripdata_202311 %>%
    count(start_station_name, sort = TRUE)
- saveRDS(data, file = "202311_station_freq.rds")
+ saveRDS(station_counts, file = "202311_station_freq.rds")
 
 ```
 
@@ -153,9 +153,9 @@ tripdata_202311 <- readRDS("monthly-data/novbikedata.rds")
 ```{r}
 
 tripdata_202312 <- readRDS("monthly-data/decbikedata.rds")
- tripdata_202312 %>%
+ station_counts <- tripdata_202312 %>%
    count(start_station_name, sort = TRUE)
- saveRDS(data, file = "202312_station_freq.rds")
+ saveRDS(station_counts, file = "202312_station_freq.rds")
 
 ```
 
