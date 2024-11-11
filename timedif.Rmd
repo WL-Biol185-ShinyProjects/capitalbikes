@@ -130,4 +130,234 @@ print(head(data))
 saveRDS(data, file = "aprilbikedatacleantimedif.rds")
 ```
 
+```{r}
+maybikedata$ride_id <- NULL
+maybikedata$rideable_type <- NULL
+maybikedata$member_casual <- NULL
+maybikedata$start_lat <- NULL
+maybikedata$end_lat <- NULL
+maybikedata$start_lng <- NULL
+maybikedata$end_lng <- NULL
+View(maybikedata)
+
+
+
+library(dplyr)
+library(lubridate)
+
+                                                                                                                                                                                                    
+
+data$started_at <- ymd_hms(data$started_at)  
+data$ended_at <- ymd_hms(data$ended_at)    
+
+
+data <- data %>%
+  mutate(time_difference = as.numeric(difftime(ended_at, started_at, units = "mins")))
+
+print(head(data))
+
+saveRDS(data, file = "maybikedatacleantimedif.rds")
+```
+
+```{r}
+junebikedata$ride_id <- NULL
+junebikedata$rideable_type <- NULL
+junebikedata$member_casual <- NULL
+junebikedata$start_lat <- NULL
+junebikedata$end_lat <- NULL
+junebikedata$start_lng <- NULL
+junebikedata$end_lng <- NULL
+View(junebikedata)
+
+
+
+library(dplyr)
+library(lubridate)
+
+                                                                                                                                                                                                    
+
+data$started_at <- ymd_hms(data$started_at)  
+data$ended_at <- ymd_hms(data$ended_at)    
+
+
+data <- data %>%
+  mutate(time_difference = as.numeric(difftime(ended_at, started_at, units = "mins")))
+
+print(head(data))
+
+saveRDS(data, file = "junebikedatacleantimedif.rds")
+```
+
+```{r}
+julybikedata$ride_id <- NULL
+julybikedata$rideable_type <- NULL
+julybikedata$member_casual <- NULL
+julybikedata$start_lat <- NULL
+julybikedata$end_lat <- NULL
+julybikedata$start_lng <- NULL
+julybikedata$end_lng <- NULL
+View(julybikedata)
+
+
+
+library(dplyr)
+library(lubridate)
+
+                                                                                                                                                                                                    
+
+data$started_at <- ymd_hms(data$started_at)  
+data$ended_at <- ymd_hms(data$ended_at)    
+
+
+data <- data %>%
+  mutate(time_difference = as.numeric(difftime(ended_at, started_at, units = "mins")))
+
+print(head(data))
+
+saveRDS(data, file = "julybikedatacleantimedif.rds")
+```
+
+```{r}
+augbikedata$ride_id <- NULL
+augbikedata$rideable_type <- NULL
+augbikedata$member_casual <- NULL
+augbikedata$start_lat <- NULL
+augbikedata$end_lat <- NULL
+augbikedata$start_lng <- NULL
+augbikedata$end_lng <- NULL
+View(augbikedata)
+
+
+
+library(dplyr)
+library(lubridate)
+
+                                                                                                                                                                                                    
+
+data$started_at <- ymd_hms(data$started_at)  
+data$ended_at <- ymd_hms(data$ended_at)    
+
+
+data <- data %>%
+  mutate(time_difference = as.numeric(difftime(ended_at, started_at, units = "mins")))
+
+print(head(data))
+
+saveRDS(data, file = "augbikedatacleantimedif.rds")
+```
+
+```{r}
+septbikedata$ride_id <- NULL
+septbikedata$rideable_type <- NULL
+septbikedata$member_casual <- NULL
+septbikedata$start_lat <- NULL
+septbikedata$end_lat <- NULL
+septbikedata$start_lng <- NULL
+septbikedata$end_lng <- NULL
+View(septbikedata)
+
+
+
+library(dplyr)
+library(lubridate)
+
+                                                                                                                                                                                                    
+
+data$started_at <- ymd_hms(data$started_at)  
+data$ended_at <- ymd_hms(data$ended_at)    
+
+
+data <- data %>%
+  mutate(time_difference = as.numeric(difftime(ended_at, started_at, units = "mins")))
+
+print(head(data))
+
+saveRDS(data, file = "septbikedatacleantimedif.rds")
+```
+
+```{r}
+octbikedata$ride_id <- NULL
+octbikedata$rideable_type <- NULL
+octbikedata$member_casual <- NULL
+octbikedata$start_lat <- NULL
+octbikedata$end_lat <- NULL
+octbikedata$start_lng <- NULL
+octbikedata$end_lng <- NULL
+View(octbikedata)
+
+
+
+library(dplyr)
+library(lubridate)
+
+                                                                                                                                                                                                    
+
+data$started_at <- ymd_hms(data$started_at)  
+data$ended_at <- ymd_hms(data$ended_at)    
+
+
+data <- data %>%
+  mutate(time_difference = as.numeric(difftime(ended_at, started_at, units = "mins")))
+
+print(head(data))
+
+saveRDS(data, file = "octbikedatacleantimedif.rds")
+```
+
+```{r}
+novbikedata$ride_id <- NULL
+novbikedata$rideable_type <- NULL
+novbikedata$member_casual <- NULL
+novbikedata$start_lat <- NULL
+novbikedata$end_lat <- NULL
+novbikedata$start_lng <- NULL
+novbikedata$end_lng <- NULL
+View(novbikedata)
+
+
+
+library(dplyr)
+library(lubridate)
+
+                                                                                                                                                                                                    
+
+data$started_at <- ymd_hms(data$started_at)  
+data$ended_at <- ymd_hms(data$ended_at)    
+
+
+data <- data %>%
+  mutate(time_difference = as.numeric(difftime(ended_at, started_at, units = "mins")))
+
+print(head(data))
+
+saveRDS(data, file = "novbikedatacleantimedif.rds")
+```
+
+```{r}
+decbikedata$ride_id <- NULL
+decbikedata$rideable_type <- NULL
+decbikedata$member_casual <- NULL
+decbikedata$start_lat <- NULL
+decbikedata$end_lat <- NULL
+decbikedata$start_lng <- NULL
+decbikedata$end_lng <- NULL
+View(decbikedata)
+
+
+
+library(dplyr)
+
+                                                                                                                                                                                                    
+
+data$started_at <- ymd_hms(data$started_at)  
+data$ended_at <- ymd_hms(data$ended_at)    
+
+
+data <- data %>%
+  mutate(time_difference = as.numeric(difftime(ended_at, started_at, units = "mins")))
+
+print(head(data))
+
+saveRDS(data, file = "decbikedatacleantimedif.rds")
+```
 
