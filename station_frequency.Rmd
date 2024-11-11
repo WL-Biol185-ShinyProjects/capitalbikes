@@ -18,9 +18,11 @@ library(tidyverse)
 
 ```{r}
 
-tripdata_202301 <- read.csv("202301-capitalbikeshare-tripdata.csv")
+tripdata_202301 <- readRDS("monthly-data/janbikedata.rds")
  tripdata_202301 %>%
    count(start_station_name, sort = TRUE)
+ saveRDS(data, file = "202301_station_freq.rds")
+ 
  
 ```
 
@@ -29,9 +31,10 @@ tripdata_202301 <- read.csv("202301-capitalbikeshare-tripdata.csv")
 
 ```{r}
 
-tripdata_202302 <- read.csv("202302-capitalbikeshare-tripdata.csv")
+tripdata_202302 <- readRDS("monthly-data/febbikedata.rds")
  tripdata_202302 %>%
    count(start_station_name, sort = TRUE)
+ saveRDS(data, file = "202302_station_freq.rds")
  
 ```
 
@@ -40,9 +43,10 @@ tripdata_202302 <- read.csv("202302-capitalbikeshare-tripdata.csv")
 
 ```{r}
 
-tripdata_202303 <- read.csv("202303-capitalbikeshare-tripdata.csv")
+tripdata_202303 <- readRDS("monthly-data/marbikedata.rds")
  tripdata_202303 %>%
    count(start_station_name, sort = TRUE)
+ saveRDS(data, file = "202303_station_freq.rds")
 
 ```
 
@@ -51,9 +55,10 @@ tripdata_202303 <- read.csv("202303-capitalbikeshare-tripdata.csv")
 
 ```{r}
 
-tripdata_202304 <- read.csv("202304-capitalbikeshare-tripdata.csv")
+tripdata_202304 <- readRDS("monthly-data/aprilbikedata.rds")
  tripdata_202304 %>%
    count(start_station_name, sort = TRUE)
+ saveRDS(data, file = "202304_station_freq.rds")
 
 ```
 
@@ -63,9 +68,10 @@ tripdata_202304 <- read.csv("202304-capitalbikeshare-tripdata.csv")
 
 ```{r}
 
-tripdata_202305 <- read.csv("202305-capitalbikeshare-tripdata.csv")
+tripdata_202305 <- readRDS("monthly-data/maybikedata.rds")
  tripdata_202305 %>%
    count(start_station_name, sort = TRUE)
+ saveRDS(data, file = "202305_station_freq.rds")
 
 ```
 
@@ -74,9 +80,10 @@ tripdata_202305 <- read.csv("202305-capitalbikeshare-tripdata.csv")
 
 ```{r}
 
-tripdata_202306 <- read.csv("202306-capitalbikeshare-tripdata.csv")
+tripdata_202306 <- readRDS("monthly-data/junebikedata.rds")
  tripdata_202306 %>%
    count(start_station_name, sort = TRUE)
+ saveRDS(data, file = "202306_station_freq.rds")
 
 ```
 
@@ -85,9 +92,10 @@ tripdata_202306 <- read.csv("202306-capitalbikeshare-tripdata.csv")
 
 ```{r}
 
-tripdata_202307 <- read.csv("202307-capitalbikeshare-tripdata.csv")
+tripdata_202307 <- readRDS("monthly-data/julybikedata.rds")
  tripdata_202307 %>%
    count(start_station_name, sort = TRUE)
+ saveRDS(data, file = "202307_station_freq.rds")
 
 ```
 
@@ -96,9 +104,66 @@ tripdata_202307 <- read.csv("202307-capitalbikeshare-tripdata.csv")
 
 ```{r}
 
-tripdata_202308 <- read.csv("202308-capitalbikeshare-tripdata.csv")
+tripdata_202308 <- readRDS("monthly-data/augbikedata.rds")
  tripdata_202308 %>%
    count(start_station_name, sort = TRUE)
+ saveRDS(data, file = "202308_station_freq.rds")
 
 ```
+
+
+#202309 frequency
+
+```{r}
+
+tripdata_202309 <- readRDS("monthly-data/septbikedata.rds")
+ tripdata_202309 %>%
+   count(start_station_name, sort = TRUE)
+ saveRDS(data, file = "202309_station_freq.rds")
+
+```
+
+
+#202310 frequency
+
+```{r}
+
+tripdata_202310 <- readRDS("monthly-data/octbikedata.rds")
+ tripdata_202310 %>%
+   count(start_station_name, sort = TRUE)
+ saveRDS(data, file = "202310_station_freq.rds")
+
+```
+
+
+#202311 frequency
+
+```{r}
+
+tripdata_202311 <- readRDS("monthly-data/novbikedata.rds")
+ tripdata_202311 %>%
+   count(start_station_name, sort = TRUE)
+ saveRDS(data, file = "202311_station_freq.rds")
+
+```
+
+
+#202312 frequency
+
+```{r}
+
+tripdata_202312 <- readRDS("monthly-data/decbikedata.rds")
+ tripdata_202312 %>%
+   count(start_station_name, sort = TRUE)
+ saveRDS(data, file = "202312_station_freq.rds")
+
+```
+
+
+
+
+
+
+
+
 
