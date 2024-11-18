@@ -28,7 +28,7 @@ bikecolors$color[bikecolors$num_bikes_available > 15] <- "green"
 
 bikeinfo <- sapply(1:nrow(bikecolors), function(x) {
 
-  paste(p(HTML(paste(strong("Station Info:"), p(bikecolors$name[x]), p(bikecolors$longitude[x], bikecolors$latitude[x]),
+  paste(p(HTML(paste(strong("Station Info:"), p(bikecolors$name[x]), p(bikecolors$latitude[x], bikecolors$longitude[x]),
                       p(bikecolors$num_bikes_available[x]))))
 
 
@@ -51,4 +51,96 @@ leaflet(data = bikecolors) %>%
         
 
 ```
+
+```{r}
+
+
+# install.packages("mapsapi")
+
+# install.packages("remotes")
+# remotes::install_github("michaeldorman/mapsapi")
+
+library(mapsapi)
+key = "AIzaSyDMA3joLJVPAEjnrE1UyTZFDQBcMtSAIjU"
+
+stations <- read.csv("bike_numbers.csv")
+
+doc = mp_directions(
+  origin = c(stations$latitude, stations$longitude),
+  destination = c(stations$latitude, stations$longitude),
+  alternatives = TRUE,
+  key = key,
+  quiet = TRUE
+)
+
+r = mp_get_routes(doc)
+
+
+library(leaflet)
+pal = colorFactor(palette = "Dark2", domain = r$alternative_id)
+leaflet() %>% 
+  addProviderTiles("CartoDB.DarkMatter") %>%
+  addPolylines(data = r, opacity = 1, weight = 7, color = ~pal(alternative_id))
+```
+```{r}
+
+library(shiny)
+library(shinydashboard)
+library(googleway)
+
+ui <- dashboardPage(
+  dashboardHeader(),
+  dashboardSidebar(),
+  dashboardBody(
+    textInput(inputId = "origin", label = "Origin"),
+    textInput(inputId = "destination", label = "Destination"),
+    actionButton(inputId = "getRoute", label = "Get Route"),
+    google_mapOutput("myMap")
+  )
+)
+
+
+data <- read.csv("bike_numbers.csv")
+
+
+server <- function(input, output){
+
+  api_key <- "AIzaSyD4XyLIPcvoPHneUvdLnr1nficqApsjAXk"
+  map_key <- "AIzaSyD4XyLIPcvoPHneUvdLnr1nficqApsjAXk"
+
+  df_route <- eventReactive(input$getRoute,{
+
+    print("getting route")
+
+    o <- input$origin
+    d <- input$destination
+
+    return(data.frame(origin = o, destination = d, stringsAsFactors = F))
+  })
+
+
+  output$myMap <- renderGoogle_map({
+
+    df <- df_route()
+    print(df)
+    if(df$origin == "" | df$destination == "")
+      return()
+
+    res <- google_directions(
+      key = api_key
+      , origin = df$origin
+      , destination = df$destination
+    )
+
+    df_route <- data.frame(route = res$routes$overview_polyline$points)
+
+    google_map(key = map_key ) %>%
+      add_polylines(data = df_route, polyline = "route")
+  })
+}
+
+shinyApp(ui, server)
+
+```
+
 

@@ -1,0 +1,92 @@
+---
+title: "selectcoordinates.rmd"
+author: "Daniel"
+date: "11/11/2024"
+output: html_document
+runtime: shiny
+---
+
+```{r}
+
+library(shiny)
+library(dplyr)
+
+
+server <- function(input, output, session) {
+
+# read csv here    
+stations <- read.csv('bike_numbers.csv')
+
+  output$select_1 = renderUI({
+
+            selectInput("select_input",label = "Stations", choices = stations$name)
+    
+
+  })
+  
+
+
+  
+    
+  
+}
+
+
+
+  
+  
+
+ui <- fluidPage(
+  uiOutput("select_1")
+)
+
+shinyApp(ui = ui, server = server)
+
+```
+
+```{r}
+
+library(dplyr)
+library(tidyverse)
+library(shiny)
+
+stations <- read.csv('bike_numbers.csv')
+
+
+ui <- fluidPage(
+  br(),
+  selectInput("start_station",label = "Stations", choices = stations$name),
+  br(),
+  textOutput('input_begin')
+  
+)
+
+server <- function(input, output, session) {
+  
+  # import station names and coordinates
+  stations <- read.csv('bike_numbers.csv')
+
+  # output the selection directly
+  output$input_begin = renderText(input$start_station)
+  
+  # capture the selection in a reactive
+  userStart = reactive(input$start_station)
+  
+  # output the selection via the reactive
+  output$input_begin = renderText({
+    req(userStart)
+    paste0('The start station I selected is ', userStart())
+  })
+
+}
+
+shinyApp(ui, server)
+  
+```
+
+
+
+
+
+
+
