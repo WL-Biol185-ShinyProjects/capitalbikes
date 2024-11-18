@@ -82,12 +82,15 @@ marbikedata$start_lng <- NULL
 marbikedata$end_lng <- NULL
 View(marbikedata)
 
+saveRDS(marbikedata, file = "marbikedataclean.rds")
 
+```
 
+```{r}
 library(dplyr)
 library(lubridate)
 
-                                                                                                                                                                                                    
+data <- readRDS("marbikedataclean.rds")                                                                                                                                                                                                    
 
 data$started_at <- ymd_hms(data$started_at)  
 data$ended_at <- ymd_hms(data$ended_at)    
@@ -111,12 +114,16 @@ aprilbikedata$start_lng <- NULL
 aprilbikedata$end_lng <- NULL
 View(aprilbikedata)
 
+saveRDS(aprilbikedata, file = "aprilbikedataclean.rds")
 
+```
+
+```{r}
 
 library(dplyr)
 library(lubridate)
 
-                                                                                                                                                                                                    
+data <- readRDS("aprilbikedataclean.rds")                                                                                                                                                                                                    
 
 data$started_at <- ymd_hms(data$started_at)  
 data$ended_at <- ymd_hms(data$ended_at)    
@@ -140,12 +147,15 @@ maybikedata$start_lng <- NULL
 maybikedata$end_lng <- NULL
 View(maybikedata)
 
+saveRDS(maybikedata, file = "maybikedataclean.rds")
+```
 
+```{r}
 
 library(dplyr)
 library(lubridate)
 
-                                                                                                                                                                                                    
+data <- readRDS("maybikedataclean.rds")                                                                                                                                                                                                    
 
 data$started_at <- ymd_hms(data$started_at)  
 data$ended_at <- ymd_hms(data$ended_at)    
@@ -169,12 +179,14 @@ junebikedata$start_lng <- NULL
 junebikedata$end_lng <- NULL
 View(junebikedata)
 
+saveRDS(junebikedata, file = "junebikedataclean.rds")
+```
 
-
+```{r}
 library(dplyr)
 library(lubridate)
 
-                                                                                                                                                                                                    
+ data <- readRDS("junebikedataclean.rds")                                                                                                                                                                                                   
 
 data$started_at <- ymd_hms(data$started_at)  
 data$ended_at <- ymd_hms(data$ended_at)    
@@ -198,12 +210,15 @@ julybikedata$start_lng <- NULL
 julybikedata$end_lng <- NULL
 View(julybikedata)
 
+saveRDS(julybikedata, file = "julybikedataclean.rds")
 
+```
 
+```{r}
 library(dplyr)
 library(lubridate)
 
-                                                                                                                                                                                                    
+    data <- readRDS("julybikedataclean.rds")                                                                                                                                                                                               
 
 data$started_at <- ymd_hms(data$started_at)  
 data$ended_at <- ymd_hms(data$ended_at)    
@@ -227,12 +242,15 @@ augbikedata$start_lng <- NULL
 augbikedata$end_lng <- NULL
 View(augbikedata)
 
+saveRDS(augbikedata, file = "augbikedataclean.rds")
 
+```
 
+```{r}
 library(dplyr)
 library(lubridate)
 
-                                                                                                                                                                                                    
+ data <- readRDS("augbikedataclean.rds")                                                                                                                                                                                                   
 
 data$started_at <- ymd_hms(data$started_at)  
 data$ended_at <- ymd_hms(data$ended_at)    
@@ -246,6 +264,14 @@ print(head(data))
 saveRDS(data, file = "augbikedatacleantimedif.rds")
 ```
 
+
+clearing global enviornment for storage
+```{r}
+rm(list = ls())  
+gc()  
+```
+
+
 ```{r}
 septbikedata$ride_id <- NULL
 septbikedata$rideable_type <- NULL
@@ -256,11 +282,15 @@ septbikedata$start_lng <- NULL
 septbikedata$end_lng <- NULL
 View(septbikedata)
 
+saveRDS(septbikedata, file = "septbikedataclean.rds")
+```
 
+```{r}
 
 library(dplyr)
 library(lubridate)
 
+ data <- readRDS("septbikedataclean.rds")
                                                                                                                                                                                                     
 
 data$started_at <- ymd_hms(data$started_at)  
@@ -285,11 +315,15 @@ octbikedata$start_lng <- NULL
 octbikedata$end_lng <- NULL
 View(octbikedata)
 
+saveRDS(octbikedata, file = "octbikedataclean.rds")
+```
 
+```{r}
 
 library(dplyr)
 library(lubridate)
 
+data <- readRDS("octbikedataclean.rds")
                                                                                                                                                                                                     
 
 data$started_at <- ymd_hms(data$started_at)  
@@ -314,12 +348,16 @@ novbikedata$start_lng <- NULL
 novbikedata$end_lng <- NULL
 View(novbikedata)
 
+saveRDS(novbikedata, file = "novbikedataclean.rds")
 
+```
+
+```{r}
 
 library(dplyr)
 library(lubridate)
 
-                                                                                                                                                                                                    
+   data <- readRDS("novbikedataclean.rds")                                                                                                                                                                                                 
 
 data$started_at <- ymd_hms(data$started_at)  
 data$ended_at <- ymd_hms(data$ended_at)    
@@ -343,11 +381,14 @@ decbikedata$start_lng <- NULL
 decbikedata$end_lng <- NULL
 View(decbikedata)
 
+saveRDS(decbikedata, file = "decbikedataclean.rds")
 
+```
 
+```{r}
 library(dplyr)
 
-                                                                                                                                                                                                    
+   data <- readRDS("decbikedataclean.rds")                                                                                                                                                                                                  
 
 data$started_at <- ymd_hms(data$started_at)  
 data$ended_at <- ymd_hms(data$ended_at)    
@@ -360,4 +401,16 @@ print(head(data))
 
 saveRDS(data, file = "decbikedatacleantimedif.rds")
 ```
+
+```{r}
+library(tidyverse)
+
+janbikedatacleantimedif <- janbikedatacleantimedif %>%
+  filter(!is.na(started_at) & !is.na(time_difference))
+
+ggplot(janbikedatacleantimedif, aes(started_at, time_difference) ) + geom_point ()
+
+```
+
+
 
