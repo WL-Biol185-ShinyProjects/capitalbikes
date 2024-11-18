@@ -4,13 +4,6 @@ output: html_document
 ---
 
 
-
-```{r}
-ui1 <- fuildPage (titlePanel("Bikes185"), 
-                  sidebarLayout(sidebarPanel()))
-```
-
-
 take all the months and combine them to make a year
 ```{r}
 year_average_timedif <- rbind(janaverage_by_day, febaverage_by_day, maraverage_by_day, aprilaverage_by_day, mayaverage_by_day, juneaverage_by_day, julyaverage_by_day, augaverage_by_day, septaverage_by_day, octaverage_by_day, novaverage_by_day, decaverage_by_day)
