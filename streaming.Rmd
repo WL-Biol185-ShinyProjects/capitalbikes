@@ -1,0 +1,39 @@
+---
+title: "streaming.Rmd"
+output: html_document
+---
+
+```{r}
+fileNames <- list.files("monthly-data", full.names = TRUE)
+
+print(fileNames)
+
+for (fileName in fileNames) {
+  
+  currentTable <- read.csv(fileName)
+  
+     baseName <- sapply(strsplit(fileName, ".", fixed = TRUE), function(x) { x[1]} )
+  
+  saveRDS(currentTable, paste0(baseName, ".rds"))
+  
+}
+
+
+
+
+```
+
+```{r}
+library(shiny)
+
+function(inout,output) {
+  output$graphTab <- renderPlot({
+    
+    monthTable <- readRDS( paste0( input$month,
+                                   ".rds"
+                                   )
+    )
+  })
+}
+```
+
