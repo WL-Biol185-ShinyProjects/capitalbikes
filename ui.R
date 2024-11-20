@@ -52,20 +52,20 @@ navbarPage("Capital Bikes",
                           )
                         )
             ),
-               tabPanel("tab 4",
+               tabPanel("Station Frequency",
                         sidebarLayout(
                           sidebarPanel(
-                            selectInput("select", label = h3("Select box"), 
-                                        choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3), 
+                            selectInput("select", label = h3("Select Month"), 
+                                        choices = list("January" = 1, "Choice 2" = 2, "Choice 3" = 3), 
                                         selected = 1),
                             
-                            hr(),
+                          
                             fluidRow(column(3, verbatimTextOutput("value")))
                             
                             
                           ),
                           mainPanel(
-                            plotOutput("plot1")
+                            uiOutput("janfreqmd")
                           )
                         )
            ),
