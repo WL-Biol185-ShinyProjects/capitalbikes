@@ -23,16 +23,16 @@ ui = navbarPage("Capital Bikes",
                       )
                     )
            ),
-              tabPanel("Weather Statistics",
+              tabPanel("Weather Trends",
                         sidebarLayout(
                             sidebarPanel(
                               radioButtons("plotType", "Plot type",
-                                           c("Scatter"="p", "Line"="l")
+                                           c("Scatter"="p", "Bar Graph"="l")
                                 )
                               ),
                               mainPanel(
-                                plotOutput("myplot2"),
-                                plotOutput("myplot")
+                                plotOutput("myplot"),
+                                plotOutput("myplot2")
                               )
                             )
            ),
