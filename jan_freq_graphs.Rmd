@@ -4,14 +4,14 @@ output: html_document
 ---
 
 
-```{r}
+```{r, echo=F}
 library(ggplot2)
 library(dplyr)
 ```
 
 
 
-```{r}
+```{r, echo=F}
 
 janfreq <- readRDS("2023-station-frequency/202301_station_freq.rds")
 
