@@ -1,0 +1,29 @@
+---
+title: "jan_freq_graphs"
+output: html_document
+---
+
+
+```{r, echo=F}
+library(ggplot2)
+library(dplyr)
+```
+
+
+
+```{r, echo=F}
+
+janfreq <- readRDS("2023-station-frequency/202301_station_freq.rds")
+
+janfreq_sorted <- arrange(janfreq, desc(n))
+
+janfreq_ordered <- mutate( janfreq_sorted, 
+                       n = factor(n, ordered = TRUE)
+                     )
+
+
+ggplot(janfreq_ordered[2:11,], aes(start_station_name, n)) + geom_col() + theme(axis.text.x = element_text(angle = 60, hjust = 1))
+
+```
+
+

@@ -1,0 +1,302 @@
+---
+title: "cleaningitmore.Rmd"
+output: html_document
+---
+```{r}
+janbikedatacleantimedif$ended_at <- NULL
+janbikedatacleantimedif$start_station_name <- NULL
+janbikedatacleantimedif$end_station_name <- NULL
+janbikedatacleantimedif$start_station_id <- NULL
+janbikedatacleantimedif$end_station_id <- NULL
+View(janbikedatacleantimedif)
+
+saveRDS(janbikedatacleantimedif, file = "janbikedatacleantimedifonly.rds")
+```
+
+```{r}
+library(dplyr)
+
+data <- readRDS("janbikedatacleantimedifonly.rds")  
+
+average_by_day <- data %>%
+  mutate(date = as.Date(started_at)) %>%   
+  group_by(date) %>%                     
+  summarize(avg_time_diff = mean(time_difference, na.rm = TRUE)) 
+
+saveRDS(average_by_day, "janaverage_by_day.rds")
+```
+
+
+```{r}
+febbikedatacleantimedif$ended_at <- NULL
+febbikedatacleantimedif$start_station_name <- NULL
+febbikedatacleantimedif$end_station_name <- NULL
+febbikedatacleantimedif$start_station_id <- NULL
+febbikedatacleantimedif$end_station_id <- NULL
+View(febbikedatacleantimedif)
+
+saveRDS(febbikedatacleantimedif, file = "febbikedatacleantimedifonly.rds")
+
+```
+
+```{r}
+library(dplyr)
+
+data <- readRDS("febbikedatacleantimedifonly.rds")  
+
+average_by_day <- data %>%
+  mutate(date = as.Date(started_at)) %>%   
+  group_by(date) %>%                     
+  summarize(avg_time_diff = mean(time_difference, na.rm = TRUE)) 
+
+saveRDS(average_by_day, "febaverage_by_day.rds")
+```
+
+```{r}
+marbikedatacleantimedif$ended_at <- NULL
+marbikedatacleantimedif$start_station_name <- NULL
+marbikedatacleantimedif$end_station_name <- NULL
+marbikedatacleantimedif$start_station_id <- NULL
+marbikedatacleantimedif$end_station_id <- NULL
+View(marbikedatacleantimedif)
+
+saveRDS(marbikedatacleantimedif, file = "marbikedatacleantimedifonly.rds")
+```
+
+```{r}
+library(dplyr)
+
+data <- readRDS("marbikedatacleantimedifonly.rds")  
+
+average_by_day <- data %>%
+  mutate(date = as.Date(started_at)) %>%   
+  group_by(date) %>%                     
+  summarize(avg_time_diff = mean(time_difference, na.rm = TRUE)) 
+
+saveRDS(average_by_day, "maraverage_by_day.rds")
+```
+
+```{r}
+aprilbikedatacleantimedif$ended_at <- NULL
+aprilbikedatacleantimedif$start_station_name <- NULL
+aprilbikedatacleantimedif$end_station_name <- NULL
+aprilbikedatacleantimedif$start_station_id <- NULL
+aprilbikedatacleantimedif$end_station_id <- NULL
+View(aprilbikedatacleantimedif)
+
+saveRDS(aprilbikedatacleantimedif, file = "aprilbikedatacleantimedifonly.rds")
+```
+
+```{r}
+library(dplyr)
+
+data <- readRDS("aprilbikedatacleantimedifonly.rds")  
+
+average_by_day <- data %>%
+  mutate(date = as.Date(started_at)) %>%   
+  group_by(date) %>%                     
+  summarize(avg_time_diff = mean(time_difference, na.rm = TRUE)) 
+
+saveRDS(average_by_day, "aprilaverage_by_day.rds")
+```
+
+```{r}
+rm(list = ls())  
+gc()
+```
+
+
+```{r}
+maybikedatacleantimedif$ended_at <- NULL
+maybikedatacleantimedif$start_station_name <- NULL
+maybikedatacleantimedif$end_station_name <- NULL
+maybikedatacleantimedif$start_station_id <- NULL
+maybikedatacleantimedif$end_station_id <- NULL
+View(maybikedatacleantimedif)
+
+saveRDS(maybikedatacleantimedif, file = "maybikedatacleantimedifonly.rds")
+```
+
+```{r}
+library(dplyr)
+
+data <- readRDS("maybikedatacleantimedifonly.rds")  
+
+average_by_day <- data %>%
+  mutate(date = as.Date(started_at)) %>%   
+  group_by(date) %>%                     
+  summarize(avg_time_diff = mean(time_difference, na.rm = TRUE)) 
+
+saveRDS(average_by_day, "mayaverage_by_day.rds")
+```
+
+```{r}
+junebikedatacleantimedif$ended_at <- NULL
+junebikedatacleantimedif$start_station_name <- NULL
+junebikedatacleantimedif$end_station_name <- NULL
+junebikedatacleantimedif$start_station_id <- NULL
+junebikedatacleantimedif$end_station_id <- NULL
+View(junebikedatacleantimedif)
+
+saveRDS(junebikedatacleantimedif, file = "junebikedatacleantimedifonly.rds")
+```
+
+```{r}
+library(dplyr)
+
+data <- readRDS("junebikedatacleantimedifonly.rds")  
+
+average_by_day <- data %>%
+  mutate(date = as.Date(started_at)) %>%   
+  group_by(date) %>%                     
+  summarize(avg_time_diff = mean(time_difference, na.rm = TRUE)) 
+
+saveRDS(average_by_day, "juneaverage_by_day.rds")
+```
+
+```{r}
+julybikedatacleantimedif$ended_at <- NULL
+julybikedatacleantimedif$start_station_name <- NULL
+julybikedatacleantimedif$end_station_name <- NULL
+julybikedatacleantimedif$start_station_id <- NULL
+julybikedatacleantimedif$end_station_id <- NULL
+View(julybikedatacleantimedif)
+
+saveRDS(julybikedatacleantimedif, file = "julybikedatacleantimedifonly.rds")
+```
+
+```{r}
+library(dplyr)
+
+data <- readRDS("julybikedatacleantimedifonly.rds")  
+
+average_by_day <- data %>%
+  mutate(date = as.Date(started_at)) %>%   
+  group_by(date) %>%                     
+  summarize(avg_time_diff = mean(time_difference, na.rm = TRUE)) 
+
+saveRDS(average_by_day, "julyaverage_by_day.rds")
+```
+
+```{r}
+augbikedatacleantimedif$ended_at <- NULL
+augbikedatacleantimedif$start_station_name <- NULL
+augbikedatacleantimedif$end_station_name <- NULL
+augbikedatacleantimedif$start_station_id <- NULL
+augbikedatacleantimedif$end_station_id <- NULL
+View(augbikedatacleantimedif)
+
+saveRDS(augbikedatacleantimedif, file = "augbikedatacleantimedifonly.rds")
+```
+
+```{r}
+library(dplyr)
+
+data <- readRDS("augbikedatacleantimedifonly.rds")  
+
+average_by_day <- data %>%
+  mutate(date = as.Date(started_at)) %>%   
+  group_by(date) %>%                     
+  summarize(avg_time_diff = mean(time_difference, na.rm = TRUE)) 
+
+saveRDS(average_by_day, "augaverage_by_day.rds")
+```
+
+```{r}
+septbikedatacleantimedif$ended_at <- NULL
+septbikedatacleantimedif$start_station_name <- NULL
+septbikedatacleantimedif$end_station_name <- NULL
+septbikedatacleantimedif$start_station_id <- NULL
+septbikedatacleantimedif$end_station_id <- NULL
+View(septbikedatacleantimedif)
+
+saveRDS(septbikedatacleantimedif, file = "septbikedatacleantimedifonly.rds")
+```
+
+```{r}
+library(dplyr)
+
+data <- readRDS("septbikedatacleantimedifonly.rds")  
+
+average_by_day <- data %>%
+  mutate(date = as.Date(started_at)) %>%   
+  group_by(date) %>%                     
+  summarize(avg_time_diff = mean(time_difference, na.rm = TRUE)) 
+
+saveRDS(average_by_day, "septaverage_by_day.rds")
+```
+
+
+```{r}
+octbikedatacleantimedif$ended_at <- NULL
+octbikedatacleantimedif$start_station_name <- NULL
+octbikedatacleantimedif$end_station_name <- NULL
+octbikedatacleantimedif$start_station_id <- NULL
+octbikedatacleantimedif$end_station_id <- NULL
+View(octbikedatacleantimedif)
+
+saveRDS(octbikedatacleantimedif, file = "octbikedatacleantimedifonly.rds")
+```
+
+```{r}
+library(dplyr)
+
+data <- readRDS("octbikedatacleantimedifonly.rds")  
+
+average_by_day <- data %>%
+  mutate(date = as.Date(started_at)) %>%   
+  group_by(date) %>%                     
+  summarize(avg_time_diff = mean(time_difference, na.rm = TRUE)) 
+
+saveRDS(average_by_day, "octaverage_by_day.rds")
+```
+
+```{r}
+novbikedatacleantimedif$ended_at <- NULL
+novbikedatacleantimedif$start_station_name <- NULL
+novbikedatacleantimedif$end_station_name <- NULL
+novbikedatacleantimedif$start_station_id <- NULL
+novbikedatacleantimedif$end_station_id <- NULL
+View(novbikedatacleantimedif)
+
+saveRDS(novbikedatacleantimedif, file = "novbikedatacleantimedifonly.rds")
+
+```
+
+```{r}
+library(dplyr)
+
+data <- readRDS("novbikedatacleantimedifonly.rds")  
+
+average_by_day <- data %>%
+  mutate(date = as.Date(started_at)) %>%   
+  group_by(date) %>%                     
+  summarize(avg_time_diff = mean(time_difference, na.rm = TRUE)) 
+
+saveRDS(average_by_day, "novaverage_by_day.rds")
+```
+
+```{r}
+decbikedatacleantimedif$ended_at <- NULL
+decbikedatacleantimedif$start_station_name <- NULL
+decbikedatacleantimedif$end_station_name <- NULL
+decbikedatacleantimedif$start_station_id <- NULL
+decbikedatacleantimedif$end_station_id <- NULL
+View(decbikedatacleantimedif)
+
+saveRDS(decbikedatacleantimedif, file = "decbikedatacleantimedifonly.rds")
+```
+
+```{r}
+library(dplyr)
+
+data <- readRDS("decbikedatacleantimedifonly.rds")  
+
+average_by_day <- data %>%
+  mutate(date = as.Date(started_at)) %>%   
+  group_by(date) %>%                     
+  summarize(avg_time_diff = mean(time_difference, na.rm = TRUE)) 
+
+saveRDS(average_by_day, "decaverage_by_day.rds")
+```
+
