@@ -1,29 +1,66 @@
-function(input, output, session) {
+stations <- read.csv("bike_numbers.csv")
+
+myUId <- tabPanel(
+  titlePanel("Bike Stations in Washington, D.C."),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput(
+        "name",
+        label = "Origin Station",
+        choices = stations$name,
+      )
+  ),
+
+    mainPanel(
+      tableOutput("stationTable"),
+      leafletOutput("stationMap")
+    )
+  )
+)
+
+mySERVERd <- function(input, output, session) {
   
-  # import station names and coordinates
-  stations <- read.csv('bike_numbers.csv')
+  stations$color <- ifelse(stations$num_bikes_available <= 5, "red",
+                           ifelse(stations$num_bikes_available <= 15, "orange", "green"))
   
-  # output the selection directly
-  req(input$select_station_1)
+
+  output$stationTable <- renderTable({
+    stations %>% filter(name == input$name)
+  })
   
-  # output$select_station_1 = renderText( filter(stations, names == input$select_station_1)
-  
-  selected_station <- filter(stations, name == input$select_station_1)
-  
-  
-  
-  
-  # # output the selection via the reactive
-  # output$station_begin = renderText({
-  #   req(userStart)
-  #   paste0('The start station I selected is ', userStart())
-  # })
-  #
-  
-  # output$station_coord = renderText({
-  #   filter(stations, name == input$select_station_1)
-  #   paste0(input$select_station_1[5:6])
-  # 
-  # })
-  
+  output$stationMap <- renderLeaflet({
+    req(input$name)
+    
+    station_data <- stations %>% filter(name == input$name)
+    
+    leaflet() %>%
+      addProviderTiles(provider = providers$Esri.WorldImagery, group = "Satellite") %>%
+      addTiles() %>%
+      addCircleMarkers(
+        data = stations,
+        popup = ~paste(
+        "<strong>Station Name:</strong>", name, "<br>",
+        "<strong>Latitude:</strong>", latitude, "<br>",
+        "<strong>Longitude:</strong>", longitude, "<br>",
+        "<strong>Available Bikes:</strong>", num_bikes_available
+      ),
+      
+        lat = ~latitude,
+        lng = ~longitude,
+        group = "Markers",
+        color = ~color,
+        radius = ~num_bikes_available
+        ) %>%
+      
+      addLayersControl(
+        baseGroups = c("Streets", "Satellite"),
+        overlayGroups = c("Markers"),
+        position = "topright"
+      ) %>%
+      setView(
+        lng = station_data$longitude,
+        lat = station_data$latitude,
+        zoom = 15
+      )
+  })
 }
