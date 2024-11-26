@@ -3,8 +3,6 @@ library(bslib)
 library(markdown)
 library(ggplot2)
 
-# Reuploaded version to Git
-
 # Define UI
 
 
@@ -30,12 +28,12 @@ ui = navbarPage("Capital Bikes",
                         sidebarLayout(
                             sidebarPanel(
                               radioButtons("plotType", "Plot type",
-                                           c("Scatter"="p", "Bar Graph"="l")
+                                           c("Scatter"="p", "Bar Graph"="b")
                                 )
                               ),
                               mainPanel(
-                                plotOutput("myplot"),
-                                plotOutput("myplot2")
+                                plotOutput("dateduration"),
+                                plotOutput("tempduration")
                               )
                             )
            ),
@@ -80,8 +78,8 @@ ui = navbarPage("Capital Bikes",
                #                          choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
                #                          selected = 1),
                # 
-               #              hr(),
-               #              fluidRow(column(3, verbatimTextOutput("value")))
+               #              # hr(),
+               #              # fluidRow(column(3, verbatimTextOutput("value")))
                # 
                # 
                #            ),
@@ -90,7 +88,7 @@ ui = navbarPage("Capital Bikes",
                #            )
                #          )
                # )
-
 )
+
 
 

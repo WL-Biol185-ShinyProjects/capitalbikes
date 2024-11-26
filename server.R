@@ -3,33 +3,43 @@ library(bslib)
 library(markdown)
 library(knitr)
 
-# Reuploaded version to Git
 
 function(input, output) {
   
   weather_data <- read.csv("~/BIO185Evs/mergedweatherdata.csv")
   weather_data$Date=as.Date(weather_data$Date)
   
-  output$myplot <- renderPlot({
+  output$dateduration <- renderPlot({
     if(input$plotType=="p"){
-    result=ggplot(weather_data, aes(x=Date, y=Duration)) + geom_point() + 
-      geom_smooth(method = "loess", color = "black", size = 1.2, se = FALSE) +
+    ggplot(weather_data, aes(x=Date, y=Duration)) + geom_point() + 
+      geom_smooth(method = "loess", color = "black", linewidth = 1.2, se = FALSE) +
       labs(title="Date vs Ride Duration", x= "Date", y= "Average Ride Duration (mins)") +
       theme_minimal()
     }
-    if(input$plotType=="l"){
-      result=ggplot(weather_data, aes(x=Date, y=Duration)) + geom_bar(stat=identity()) + 
-        labs(title="Date vs Ride Duration", x= "Date", y= "Average Ride Duration (mins)") +
-        theme_minimal()
+    else if(input$plotType=="b"){
+      ggplot(weather_data, aes(x = Date, y = Duration)) + 
+        geom_bar(stat = "identity", fill = "black") + 
+        labs(title = "Date vs Ride Duration", x = "Date", y = "Average Ride Duration (mins)") + 
+        theme_minimal()+
+        theme(axis.text.x = element_text(angle = 45, hjust = 1))
     }
-    return(result)
   })
   
-  output$myplot2 <- renderPlot({
-    ggplot(mergedweatherdata, aes(Tempavg, Duration)) + geom_point () +
-      geom_smooth(method = "lm", color = "black", size = 1.2, se = FALSE) +
+  output$tempduration <- renderPlot({
+    if(input$plotType=="p"){
+    ggplot(weather_data, aes(Tempavg, Duration)) + geom_point () +
+      geom_smooth(method = "lm", color = "black", linewidth = 1.2, se = FALSE) +
       labs(title="Average Temperature vs Ride Duration", x= "Average Temperature", y= "Average Ride Duration (mins)") +
       theme_minimal()
+    }
+    else if(input$plotType=="b"){
+      ggplot(weather_data, aes(x = Tempavg, y = Duration)) + 
+        geom_bar(stat = "identity", fill = "black") + 
+        labs(title = "Average Temperature vs Ride Duration", x = "Average Temperature", y = "Average Ride Duration (mins)") + 
+        theme_minimal()+
+        theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    }
+    
   })
   
   output$janfreqmd <- renderUI({
@@ -37,5 +47,8 @@ function(input, output) {
   })
   
 }
+  
+ 
+
 
 
