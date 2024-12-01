@@ -4,6 +4,7 @@ library(markdown)
 library(ggplot2)
 library(plotly)
 library(tidyverse)
+library(dplyr)
 
 # Define UI
 
@@ -75,17 +76,16 @@ ui = navbarPage("Capital Bikes",
                         sidebarLayout(
                           sidebarPanel(
                             selectInput("select", label = h3("Select Month"),
-                                        choices = list("January" = 1, "February" = 2, "March" = 3),
+                                        choices = list("January" = 1, "February" = 2, "March" = 3, "April" = 4, "May" = 5, "June" = 6, "July" = 7, "August" = 8, "September" = 9, "October" = 10, "November" = 11, "December" = 12),
                                         selected = 1),
 
-
-                            # fluidRow(column(3, verbatimTextOutput("value")))
+# 
+# fluidRow(column(3, verbatimTextOutput("value")))
 
 
                           ),
                           mainPanel(
-                            # uiOutput("janfreqmd")
-                            plotlyOutput("janfreqmd",height="800px")
+                            plotlyOutput("selectedfreq", height="800px")
                           )
                         )
            ),
