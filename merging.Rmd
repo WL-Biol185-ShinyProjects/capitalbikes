@@ -22,6 +22,17 @@ merge_data <- data.frame(Date= cleanedbikesweather$datetime, Duration = year_ave
 write.csv(merge_data, "merged_weather_data.csv", row.names = FALSE)
 ```
 
+turning C to F for bar graphs
 
+```{r}
+data <- read.csv("mergedweatherdata.csv")
+
+data$Tempavg <- (data$Tempavg * 9/5) + 32
+data$Tempmax <- (data$Tempmax * 9/5) + 32
+data$Tempmin <- (data$Tempmin * 9/5) + 32
+
+write.csv(data, "mergedweatherdata.csv", row.names = FALSE)
+
+```
 
 

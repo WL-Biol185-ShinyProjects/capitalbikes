@@ -2,6 +2,8 @@ library(shiny)
 library(bslib)
 library(markdown)
 library(ggplot2)
+library(plotly)
+library(tidyverse)
 
 # Define UI
 
@@ -29,11 +31,26 @@ ui = navbarPage("Capital Bikes",
                             sidebarPanel(
                               radioButtons("plotType", "Plot type",
                                            c("Scatter"="p", "Bar Graph"="b")
-                                )
+                                ),
+                              sliderInput(
+                                inputId = "date_slider",
+                                label = "Filter by Date Range:",
+                                min = as.Date("2023-01-01"),  
+                                max = as.Date("2023-12-31"),  
+                                value = c(as.Date("2023-01-01"), as.Date("2023-12-31")),  
+                                timeFormat = "%Y-%m-%d"
+                              ),
+                              sliderInput(
+                                inputId = "temp_slider",
+                                label = "Filter by Temperature Range:",
+                                min = 32, 
+                                max = 90,   
+                                value = c(32, 90)  
+                              )
                               ),
                               mainPanel(
-                                plotOutput("dateduration"),
-                                plotOutput("tempduration")
+                                plotlyOutput("dateduration"),
+                                plotlyOutput("tempduration")
                               )
                             )
            ),
@@ -67,7 +84,8 @@ ui = navbarPage("Capital Bikes",
 
                           ),
                           mainPanel(
-                            uiOutput("janfreqmd")
+                            # uiOutput("janfreqmd")
+                            plotlyOutput("janfreqmd",height="800px")
                           )
                         )
            ),
