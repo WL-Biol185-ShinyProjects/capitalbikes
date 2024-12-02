@@ -5,25 +5,34 @@ library(ggplot2)
 library(plotly)
 library(tidyverse)
 library(dplyr)
+library(leaflet)
+library(mapsapi)
 
 # Define UI
 
+stations <- read.csv("bike_numbers.csv")
 
 ui = navbarPage("Capital Bikes",
            tabPanel("Bike Station Map",
                     sidebarLayout(
                       sidebarPanel(
-                        selectInput("select1", label = h3("Select box"),
-                                    choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
-                                    selected = 1),
+                        selectInput(
+                          "name", 
+                          label = h3("Origin Station"),
+                          choices = stations$name,
+                        )
+                      ),
 
-                        hr(),
-                        fluidRow(column(3, verbatimTextOutput("value")))
-
-
-                        ),
+# 
+#                         hr(),
+#                         fluidRow(column(3, verbatimTextOutput("value")))
+# 
+# 
+#                         ),
                         mainPanel(
-                         plotOutput("plot1")
+                         plotOutput("plot1"),
+                         tableOutput("stationTable"),
+                         leafletOutput("stationMap")
                       )
                     )
            ),
