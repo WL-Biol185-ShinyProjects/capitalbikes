@@ -42,7 +42,7 @@ function(input, output) {
     ggplotly(plot1)
   })
   
-  output$tempduration <- renderPlotly({
+  output$tempduration <- renderPlot({
     if(input$plotType=="p"){
     plot2=ggplot(filtered_temp_data(), aes(Tempavg, Duration)) + geom_point (color="red") +
       geom_smooth(method = "lm", color = "black", linewidth = 0.8, se = FALSE) +
@@ -57,12 +57,9 @@ function(input, output) {
         theme_minimal()+
         theme(axis.text.x = element_text(angle = 45, hjust = 1))
     }
-    ggplotly(plot2)
+    (plot2)
   })
   
-  # output$janfreqmd <- renderUI({
-  #   HTML(markdown::markdownToHTML(knit('jan_freq_graphs.Rmd', quiet = TRUE)))
-  # })
   
   janfreq <- readRDS("2023-station-frequency/202301_station_freq.rds") %>%
   filter(start_station_name!="")%>%

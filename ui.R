@@ -10,6 +10,18 @@ library(dplyr)
 
 
 ui = navbarPage("Capital Bikes",
+                tabPanel("About",
+                         sidebarLayout(
+                           sidebarPanel(
+                             selectInput("select5", label = h3("Select box"),
+                                         choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
+                                         selected = 1)
+                           ),
+                           mainPanel(
+                             plotOutput("plot100")
+                           )
+                         )
+                ),
            tabPanel("Bike Station Map",
                     sidebarLayout(
                       sidebarPanel(
@@ -51,11 +63,11 @@ ui = navbarPage("Capital Bikes",
                               ),
                               mainPanel(
                                 plotlyOutput("dateduration"),
-                                plotlyOutput("tempduration")
+                                plotOutput("tempduration")
                               )
                             )
            ),
-             tabPanel("tab 3",
+             tabPanel("tab 4",
                        sidebarLayout(
                          sidebarPanel(
                            selectInput("select3", label = h3("Select box"),
@@ -67,7 +79,7 @@ ui = navbarPage("Capital Bikes",
 
                          ),
                          mainPanel(
-                           plotOutput("plot100")
+                           plotOutput("plot200")
                          )
                        )
            ),
@@ -85,7 +97,7 @@ ui = navbarPage("Capital Bikes",
                           )
                         )
            ),
-               tabPanel("tab 5",
+               tabPanel("tab 6",
                         sidebarLayout(
                           sidebarPanel(
                             selectInput("select5", label = h3("Select box"),
@@ -93,7 +105,7 @@ ui = navbarPage("Capital Bikes",
                                         selected = 1)
                             ),
                           mainPanel(
-                            plotOutput("plot200")
+                            plotOutput("plot300")
                           )
                         )
                )
