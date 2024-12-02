@@ -183,7 +183,7 @@ function(input, output) {
       ggplotly(plot5)
     } 
     else if (input$selectMonth == "April") {
-      plot6 <- ggplot(aprilfreq, aes(start_station_name, n)) +
+      plot6 <- ggplot(aprfreq, aes(start_station_name, n)) +
         geom_col(fill="red") +
         labs(title = "April Top 10 Start Stations", x = "Station Name", y = "Number of Pick-Ups") +
         theme(axis.text.x = element_text(angle = 60, hjust = 1))

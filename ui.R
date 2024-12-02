@@ -13,7 +13,7 @@ ui = navbarPage("Capital Bikes",
            tabPanel("Bike Station Map",
                     sidebarLayout(
                       sidebarPanel(
-                        selectInput("select", label = h3("Select box"),
+                        selectInput("select1", label = h3("Select box"),
                                     choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
                                     selected = 1),
 
@@ -58,12 +58,11 @@ ui = navbarPage("Capital Bikes",
              tabPanel("tab 3",
                        sidebarLayout(
                          sidebarPanel(
-                           selectInput("select", label = h3("Select box"),
+                           selectInput("select3", label = h3("Select box"),
                                        choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
                                        selected = 1),
 
                            hr(),
-                           # fluidRow(column(3, verbatimTextOutput("value")))
 
 
                          ),
@@ -86,23 +85,23 @@ ui = navbarPage("Capital Bikes",
                           )
                         )
            ),
-               # tabPanel("tab 5",
-               #          sidebarLayout(
-               #            sidebarPanel(
-               #              selectInput("select", label = h3("Select box"),
-               #                          choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
-               #                          selected = 1),
-               # 
+               tabPanel("tab 5",
+                        sidebarLayout(
+                          sidebarPanel(
+                            selectInput("select5", label = h3("Select box"),
+                                        choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
+                                        selected = 1),
+
                #              # hr(),
                #              # fluidRow(column(3, verbatimTextOutput("value")))
-               # 
-               # 
-               #            ),
-               #            mainPanel(
-               #              plotOutput("plot1")
-               #            )
-               #          )
-               # )
+
+
+                          ),
+                          mainPanel(
+                            plotOutput("plot1")
+                          )
+                        )
+               )
 )
 
 
