@@ -67,7 +67,7 @@ ui = navbarPage("Capital Bikes",
 
                          ),
                          mainPanel(
-                           # plotOutput("plot1")
+                           plotOutput("plot100")
                          )
                        )
            ),
@@ -90,19 +90,14 @@ ui = navbarPage("Capital Bikes",
                           sidebarPanel(
                             selectInput("select5", label = h3("Select box"),
                                         choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
-                                        selected = 1),
-
-               #              # hr(),
-               #              # fluidRow(column(3, verbatimTextOutput("value")))
-
-
-                          ),
+                                        selected = 1)
+                            ),
                           mainPanel(
-                            plotOutput("plot1")
+                            plotOutput("plot200")
                           )
                         )
                )
-)
+ )
 
 
 
