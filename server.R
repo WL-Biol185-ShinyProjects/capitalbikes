@@ -247,10 +247,10 @@ function(input, output, session) {
   
   # this solves merge conflict
   source("stationSelector.r")
-  source("bikeRouter.r")
+  # source("bikeRouter.r")
   
   output$stationSelector <- mySERVERd(input, output)
-  output$bikeRouter <- myRouter(input, output)
+  # output$bikeRouter <- myRouter(input, output)
   
 }
   

@@ -94,28 +94,28 @@ ui = navbarPage("Capital Bikes",
                           )
                         )
            ),
-               tabPanel("Bike Router",
-                        titlePanel("Bike Stations in Washington, D.C."),
-                        sidebarLayout(
-                          sidebarPanel(
-                            selectInput(
-                              "origin",
-                              label = "Origin Station",
-                              choices = stations$name,
-                            ),
-                            selectInput(
-                              "destination",
-                              label = "Destination Station",
-                              choices = stations$name,
-                            ),
-                            actionButton("route", "Get Route")
-                          ),
-                          mainPanel(
-                            tableOutput("stationTable"),
-                            leafletOutput("stationMap")
-                          )
-                        )
-               )
+               # tabPanel("Bike Router",
+               #          titlePanel("Bike Stations in Washington, D.C."),
+               #          sidebarLayout(
+               #            sidebarPanel(
+               #              selectInput(
+               #                "origin",
+               #                label = "Origin Station",
+               #                choices = stations$name,
+               #              ),
+               #              selectInput(
+               #                "destination",
+               #                label = "Destination Station",
+               #                choices = stations$name,
+               #              ),
+               #              actionButton("route", "Get Route")
+               #            ),
+               #            mainPanel(
+               #              tableOutput("stationTable"),
+               #              leafletOutput("stationMap")
+               #            )
+               #          )
+               # )
                 
  )
 
