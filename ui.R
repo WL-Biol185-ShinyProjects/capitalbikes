@@ -30,7 +30,6 @@ ui = navbarPage("Capital Bikes",
 # 
 #                         ),
                         mainPanel(
-                         plotOutput("plot1"),
                          tableOutput("stationTable"),
                          leafletOutput("stationMap")
                       )
