@@ -250,7 +250,7 @@ function(input, output, session) {
   source("bikeRouter.r")
   
   output$stationSelector <- mySERVERd(input, output)
-  # output$bikeRouter <- myRouter(input, output)
+  output$bikeRouter <- myRouter(input, output)
   
 }
   

@@ -94,18 +94,29 @@ ui = navbarPage("Capital Bikes",
                           )
                         )
            ),
-               tabPanel("tab 7",
+               tabPanel("Bike Router",
+                        titlePanel("Bike Stations in Washington, D.C."),
                         sidebarLayout(
                           sidebarPanel(
-                            selectInput("select5", label = h3("Select box"),
-                                        choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
-                                        selected = 1)
+                            selectInput(
+                              "origin",
+                              label = "Origin Station",
+                              choices = stations$name,
                             ),
+                            selectInput(
+                              "destination",
+                              label = "Destination Station",
+                              choices = stations$name,
+                            ),
+                            actionButton("route", "Get Route")
+                          ),
                           mainPanel(
-                            plotOutput("plot200")
+                            tableOutput("stationTable"),
+                            leafletOutput("stationMap")
                           )
                         )
                )
+                
  )
 
 
