@@ -42,7 +42,7 @@ function(input, output) {
     ggplotly(plot1)
   })
   
-  output$tempduration <- renderPlot({
+  output$tempduration <- renderPlotly({
     if(input$plotType=="p"){
     plot2=ggplot(filtered_temp_data(), aes(Tempavg, Duration)) + geom_point (color="red") +
       geom_smooth(method = "lm", color = "black", linewidth = 0.8, se = FALSE) +
@@ -57,7 +57,7 @@ function(input, output) {
         theme_minimal()+
         theme(axis.text.x = element_text(angle = 45, hjust = 1))
     }
-    (plot2)
+    ggplotly(plot2)
   })
   
   

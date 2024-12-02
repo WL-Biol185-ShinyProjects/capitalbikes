@@ -10,18 +10,6 @@ library(dplyr)
 
 
 ui = navbarPage("Capital Bikes",
-                tabPanel("About",
-                         sidebarLayout(
-                           sidebarPanel(
-                             selectInput("select5", label = h3("Select box"),
-                                         choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
-                                         selected = 1)
-                           ),
-                           mainPanel(
-                             plotOutput("plot100")
-                           )
-                         )
-                ),
            tabPanel("Bike Station Map",
                     sidebarLayout(
                       sidebarPanel(
@@ -63,7 +51,7 @@ ui = navbarPage("Capital Bikes",
                               ),
                               mainPanel(
                                 plotlyOutput("dateduration"),
-                                plotOutput("tempduration")
+                                plotlyOutput("tempduration")
                               )
                             )
            ),
@@ -79,7 +67,7 @@ ui = navbarPage("Capital Bikes",
 
                          ),
                          mainPanel(
-                           plotOutput("plot200")
+                           plotOutput("plot100")
                          )
                        )
            ),
@@ -105,7 +93,7 @@ ui = navbarPage("Capital Bikes",
                                         selected = 1)
                             ),
                           mainPanel(
-                            plotOutput("plot300")
+                            plotOutput("plot200")
                           )
                         )
                )
