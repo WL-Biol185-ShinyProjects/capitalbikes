@@ -94,7 +94,7 @@ ui = navbarPage("Capital Bikes",
                           )
                         )
            ),
-               tabPanel("tab 6",
+               tabPanel("tab 7",
                         sidebarLayout(
                           sidebarPanel(
                             selectInput("select5", label = h3("Select box"),
