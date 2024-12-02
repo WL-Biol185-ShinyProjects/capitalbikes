@@ -1,22 +1,22 @@
 stations <- read.csv("bike_numbers.csv")
 
-myUId <- tabPanel(
-  titlePanel("Bike Stations in Washington, D.C."),
-  sidebarLayout(
-    sidebarPanel(
-      selectInput(
-        "name",
-        label = "Origin Station",
-        choices = stations$name,
-      )
-  ),
-
-    mainPanel(
-      tableOutput("stationTable"),
-      leafletOutput("stationMap")
-    )
-  )
-)
+# myUId <- tabPanel(
+#   titlePanel("Bike Stations in Washington, D.C."),
+#   sidebarLayout(
+#     sidebarPanel(
+#       selectInput(
+#         "name",
+#         label = "Origin Station",
+#         choices = stations$name,
+#       )
+#   ),
+# 
+#     mainPanel(
+#       tableOutput("stationTable"),
+#       leafletOutput("stationMap")
+#     )
+#   )
+# )
 
 mySERVERd <- function(input, output, session) {
   
