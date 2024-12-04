@@ -72,15 +72,14 @@ ui = navbarPage("Capital Bikes",
                             )
                               ),
                               mainPanel(
-                                h3("About Our Capital Bikes App"),
-                                p("This Shiny app is designed to help users find bike stations, view how weather trends impact bike usage, and see the most popular stations city bikers use each month. 
-         Use the tabs to navigate between features, and customize plots using the controls."),
+                                h3("Weather Trend Interactive Plots"),
+                                p("Have you ever wondered when the Captial Bike system was most used? Or how the weather and temperature impact how long people bike for? Explore our plots to gain insight into when DCers use this bike service the most."),
                                 plotlyOutput("dateduration"),
                                 plotlyOutput("tempduration")
                               )
                             )
            ),
-             tabPanel("tab 4",
+             tabPanel("Bike Router",
                        sidebarLayout(
                          sidebarPanel(
                            selectInput("select3", label = h3("Select box"),
@@ -106,6 +105,8 @@ ui = navbarPage("Capital Bikes",
                                         selected = "January"),
                           ),
                           mainPanel(
+                            h3("Start Station Frequency"),
+                            p("This tab allows you to compare the top 10 most frequented start stations customers used each month. This is meant to help new bike users understand which stations are popular throughout the city. You'll find that Union Station was the most popular station to start biking from, with it being used the most frequently 11 out of 12 months of the year in 2023. Watch as the values get higher throughout the middle of the year, reaching a high of 5,340 starts from Union Station in October, 2023."),
                             plotlyOutput("selectedfreq", height="800px")
                           )
                         )
