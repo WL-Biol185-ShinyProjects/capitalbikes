@@ -319,10 +319,12 @@ function(input, output, session) {
   
   # this solves merge conflict
   source("stationSelector.r")
-  # source("bikeRouter.r")
+  # source("fixedbikerouter.r")
+  
+  stations <- read.csv("bike_numbers.csv")
   
   output$stationSelector <- mySERVERd(input, output)
-  # output$bikeRouter <- myRouter(input, output)
+  # output$fixedbikerouter <- myRouter(input, output)
   
 }
   

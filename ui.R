@@ -129,7 +129,7 @@ tags$style(HTML("
                         )
            ),
                # tabPanel("Bike Router",
-               #          titlePanel("Bike Stations in Washington, D.C."),
+               #          # titlePanel("Bike Stations in Washington, D.C."),
                #          sidebarLayout(
                #            sidebarPanel(
                #              selectInput(
@@ -145,12 +145,11 @@ tags$style(HTML("
                #              actionButton("route", "Get Route")
                #            ),
                #            mainPanel(
-               #              tableOutput("stationTable"),
                #              leafletOutput("stationMap")
                #            )
                #          )
                # )
-                
+
  )
 
 
