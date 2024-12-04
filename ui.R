@@ -75,7 +75,8 @@ ui = navbarPage("Capital Bikes",
                                 h3("Weather Trend Interactive Plots"),
                                 p("Have you ever wondered when the Captial Bike system was most used? Or how the weather and temperature impact how long people bike for? Explore our plots to gain insight into when DCers use this bike service the most."),
                                 plotlyOutput("dateduration"),
-                                plotlyOutput("tempduration")
+                                plotlyOutput("tempduration"),
+                                plotOutput("precipduration")
                               )
                             )
            ),

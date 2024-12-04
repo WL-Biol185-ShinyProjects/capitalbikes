@@ -59,6 +59,38 @@ function(input, output, session) {
     }
     ggplotly(plot2)
   })
+    
+  weather <- read.csv("mergedweatherdata.csv")
+  
+  rain <- filter(weather, Preciptype == "rain")
+  rainavg <- mean(rain$Duration)
+  
+  noprecip <- filter(weather, is.na(Preciptype))
+  noprecipavg <- mean(noprecip$Duration)
+  
+  snow <- filter(weather, Preciptype == "rain,snow" | Preciptype == "snow")
+  snowavg <- mean(snow$Duration)
+  
+  freezingrain <- filter(weather, Preciptype == "freezingrain" | Preciptype == "rain,freezingrain")
+  freezingrainavg <- mean(freezingrain$Duration)
+  
+  
+  df <- data.frame(
+    preciptype=c("No Precipitation","Rain","Freezing Rain","Snow") ,  
+    durationavg=c(noprecipavg,rainavg,freezingrainavg,snowavg)
+  )
+  
+  output$precipduration <- renderPlot({
+    ggplot(df, aes(x = preciptype, y = durationavg)) +
+      geom_bar(stat = "identity", fill = "red") +
+      labs(
+        title = "Average Ride Duration by Precipitation Type",
+        x = "Type of Precipitation",
+        y = "Average Ride Duration (mins)"
+      ) +
+      theme_minimal()
+  })
+  
   
   
   janfreq <- readRDS("2023-station-frequency/202301_station_freq.rds") %>%
