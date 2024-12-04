@@ -103,11 +103,18 @@ ui = navbarPage("Capital Bikes",
                                         choices = c("January", "February", "March", "April", 
                                                     "May", "June", "July", "August", "September", "October", "November", "December"),
                                         selected = "January"),
+                            textInput(
+                              inputId = "stationName", 
+                              label = h3("Enter Station Name"),
+                              placeholder = "Type a station name here..."
+                            ),
+                            h3("Station Details"),
+                            verbatimTextOutput("stationBlurb"),
                           ),
                           mainPanel(
                             h3("Start Station Frequency"),
                             p("This tab allows you to compare the top 10 most frequented start stations customers used each month. This is meant to help new bike users understand which stations are popular throughout the city. You'll find that Union Station was the most popular station to start biking from, with it being used the most frequently 11 out of 12 months of the year in 2023. Watch as the values get higher throughout the middle of the year, reaching a high of 5,340 starts from Union Station in October, 2023."),
-                            plotlyOutput("selectedfreq", height="800px")
+                            plotlyOutput("selectedfreq", height="800px"),
                           )
                         )
            ),

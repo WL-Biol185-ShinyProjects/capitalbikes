@@ -244,6 +244,30 @@ function(input, output, session) {
     }
   })
   
+  output$stationBlurb <- renderText({
+    req(input$stationName)  
+    
+    
+    stationBlurbs <- list(
+      "Union Station" = "Union Station is the busiest start station for Capital Bike users. It is also one of the busiest train stations in the United States. In Union Station, you can find an assortment of shops and food options. Nearby to Union station, you can visit the U.S. Capitol, explore the different Smithsonian museums like the National Museum of Natural History or the National Museum of American History, appriciate artwork at the National Gallery of Art, wander through the National Postal Museum, or visit the Library of Congress- all just a quick bike ride away!",
+      "New Hampshire Ave & T St NW" = "TBD",
+      "15th & P St NW" = "TBD",
+      "5th & K St NW" = "TBD"
+    )
+    
+   
+    station <- trimws(tolower(input$stationName))  
+    matchedStation <- names(stationBlurbs)[tolower(names(stationBlurbs)) == station]
+    
+    if (length(matchedStation) == 0) {
+      "Station not found. Please try entering a valid station name."
+    } else {
+      stationBlurbs[[matchedStation]]
+    }
+  })
+    
+    
+    
   
   # this solves merge conflict
   source("stationSelector.r")
