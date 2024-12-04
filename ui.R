@@ -44,6 +44,8 @@ ui = navbarPage("Capital Bikes",
 # 
 #                         ),
                         mainPanel(
+                          h3("Interactive Bike Station Map"),
+                          p("Use this dropdown selecter to locate the station of your choosing. The larger green dots signify stations with more bikes, and the smaller red dots signify stations with less bikes."),
                          tableOutput("stationTable"),
                          leafletOutput("stationMap")
                       )
