@@ -95,6 +95,15 @@ ui = navbarPage("Capital Bikes",
                          )
                        )
            ),
+tags$style(HTML("
+    #stationBlurb {
+      white-space: pre-wrap; /* Allows for multiline text */
+      word-wrap: break-word; /* Ensures long words break appropriately */
+      overflow: visible; /* Ensures the box does not scroll */
+      height: auto; /* Height adjusts based on the content */
+      max-height: none; /* Ensure there is no maximum height */
+    }
+  ")),
                tabPanel("Station Frequency",
                         sidebarLayout(
                           sidebarPanel(

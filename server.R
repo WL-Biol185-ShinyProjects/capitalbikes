@@ -250,8 +250,8 @@ function(input, output, session) {
     
     stationBlurbs <- list(
       "Union Station" = "Union Station is the busiest start station for Capital Bike users. It is also one of the busiest train stations in the United States. In Union Station, you can find an assortment of shops and food options. Nearby to Union station, you can visit the U.S. Capitol, explore the different Smithsonian museums like the National Museum of Natural History or the National Museum of American History, appriciate artwork at the National Gallery of Art, wander through the National Postal Museum, or visit the Library of Congress- all just a quick bike ride away!",
-      "New Hampshire Ave & T St NW" = "TBD",
-      "15th & P St NW" = "TBD",
+      "New Hampshire Ave & T St NW" = "This station is consistently one of the buisiest stations for Capital Bikeshare users. Close to Dupont Cirlce, this staion is also near The Phillips Collection – a world-renowned art museum with works by Picasso, Rothko, and Van Gogh. From here, the White House is also very accesible by bike.",
+      "15th & P St NW" = "From this station, Logan Circle is just a few blocks away. This residential area has a beautiful public park in the very center and is surrounded by Victorian houses. It lends itself to a lazy Sunday afternoon stroll and has cafes such as The Roasted Boon Co. and Slipstream. If you're looking for a bike destination, try The Washington National Cathedral, a DC architectural landmark, which is only a 15 minute bike ride way.",
       "5th & K St NW" = "TBD"
     )
     
