@@ -13,6 +13,20 @@ library(mapsapi)
 stations <- read.csv("bike_numbers.csv")
 
 ui = navbarPage("Capital Bikes",
+                theme = bs_theme(bootswatch = "united"),
+                tabPanel("About",
+                         
+                          
+                           mainPanel(
+                             h3("About Our Capital Bikes App"),
+                             p("This Shiny app is designed to help users find bike stations, view how weather trends impact bike usage, and see the most popular stations city bikers use each month. 
+         Use the tabs to navigate between features, and customize plots using the controls."),
+                             p("The Bike Station Map tab allows you to find your desired station as well as the number of bike docks. The Weather Trends tab allows you to explore data using interactive sliders, and the Station Frequency tab 
+         gives information of the top 10 most started from stations every month. Our data is from the year 2023"),
+                             plotOutput("plot900")
+                           )
+                         
+                ),
            tabPanel("Bike Station Map",
                     sidebarLayout(
                       sidebarPanel(
@@ -55,9 +69,12 @@ ui = navbarPage("Capital Bikes",
                                 min = 32, 
                                 max = 90,   
                                 value = c(32, 90)  
-                              )
+                            )
                               ),
                               mainPanel(
+                                h3("About Our Capital Bikes App"),
+                                p("This Shiny app is designed to help users find bike stations, view how weather trends impact bike usage, and see the most popular stations city bikers use each month. 
+         Use the tabs to navigate between features, and customize plots using the controls."),
                                 plotlyOutput("dateduration"),
                                 plotlyOutput("tempduration")
                               )
@@ -117,6 +134,7 @@ ui = navbarPage("Capital Bikes",
                # )
                 
  )
+
 
 # reuploaded version 12/2/2024
 
