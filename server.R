@@ -93,6 +93,7 @@ function(input, output, session) {
   
   
   
+  
   janfreq <- readRDS("2023-station-frequency/202301_station_freq.rds") %>%
   filter(start_station_name!="")%>%
   arrange(desc(n)) %>%
