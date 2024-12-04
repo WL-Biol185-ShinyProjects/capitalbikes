@@ -285,7 +285,22 @@ function(input, output, session) {
       "Union Station" = "Union Station is the busiest start station for Capital Bike users. It is also one of the busiest train stations in the United States. In Union Station, you can find an assortment of shops and food options. Nearby to Union station, you can visit the U.S. Capitol, explore the different Smithsonian museums like the National Museum of Natural History or the National Museum of American History, appriciate artwork at the National Gallery of Art, wander through the National Postal Museum, or visit the Library of Congress- all just a quick bike ride away!",
       "New Hampshire Ave & T St NW" = "This station is consistently one of the buisiest stations for Capital Bikeshare users. Close to Dupont Cirlce, this staion is also near The Phillips Collection – a world-renowned art museum with works by Picasso, Rothko, and Van Gogh. From here, the White House is also very accesible by bike.",
       "15th & P St NW" = "From this station, Logan Circle is just a few blocks away. This residential area has a beautiful public park in the very center and is surrounded by Victorian houses. It lends itself to a lazy Sunday afternoon stroll and has cafes such as The Roasted Boon Co. and Slipstream. If you're looking for a bike destination, try The Washington National Cathedral, a DC architectural landmark, which is only a 15 minute bike ride way.",
-      "5th & K St NW" = "TBD"
+      "5th & K St NW" = "In the heart of downtown, this station is close to Penn Quarter. Here, you can visit the National Portrait Gallery, the Smithsonian American Art Museum, and the Capital One Arena to catch a Washington Wizards game or a concert. Bike west to reach the Layfaette park.",
+      "1st & M St NE" = "Union Market is closeby to this station and includes a trendy food hub with local eateries and vendors. It's also close to the H Street Corridor which has great nightlife. Pick up a bike and ride 10 minutes to the Atlas District- DC's arts and entertainment neighborhood- or head west towards the U.S. Capitol and explore the the Library of Congress.",
+      "14th & V St NW" = "This station is in the historic U Street Corridor, where you can find American cultural landmarks. Visit the African American Civil War Museum and iconic jazz venues like the 9:30 Club. From here, cycle toward the National Mall and visit monuments like the Washington Monument and the U.S. Capitol.",
+      "14th & R St NW" = "A short distance from the trendy Logan Circle neighborhood, this area features excellent restaurants, local shops, and beautiful Victorian row houses. Bike down to the National Mall or head toward the Dupont Circle area, known for its shops, cafes, and vibrant community.",
+      "17th & Corcoran St NW" = "TBD",
+      "8th & O St NW" = "TBD",
+      "Eastern Market Metro/ Pennsylvania Ave & 8th St SE" = "TBD",
+      "Massachusetts Ave & Dupont Circle NW" = "TBD",
+      "Jefferson Memorial" = "TBD",
+      "Smithsonia-National Mall/ Jefferson Dr & 12th St SW" = "TBD",
+      "Lincoln Memorial" = "TBD",
+      "Henry Bacon Dr & Lincoln Memorial Circle NW" = "TBD",
+      "4th St & Madison Dr NW" = "TBD",
+      "M St & Delaware Ave NE" = "TBD",
+      "Adams Mill & Columbia Rd NW" = "TBD"
+      
     )
     
    
