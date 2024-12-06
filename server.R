@@ -45,14 +45,14 @@ function(input, output, session) {
   output$tempduration <- renderPlotly({
     if(input$plotType=="p"){
     plot2=ggplot(filtered_temp_data(), aes(Tempavg, Duration)) + geom_point (color="red") +
-      geom_smooth(method = "lm", color = "black", linewidth = 0.8, se = FALSE) +
+      geom_smooth(method = "loess", color = "black", linewidth = 0.8, se = FALSE) +
       labs(title="Average Temperature vs Ride Duration", x= "Average Temperature", y= "Average Ride Duration (mins)") +
       theme_minimal()
     }
     else if(input$plotType=="b"){
       plot2=ggplot(filtered_temp_data(), aes(x = Tempavg, y = Duration)) +
-        geom_bar(stat = "identity", fill = "red") +
-        geom_smooth(method = "lm", color = "black", linewidth = 0.8, se = FALSE) +
+        geom_col(fill = "red") +
+        geom_smooth(method = "loess", color = "black", linewidth = 0.8, se = FALSE) +
         labs(title = "Average Temperature vs Ride Duration", x = "Average Temperature", y = "Average Ride Duration (mins)") +
         theme_minimal()+
         theme(axis.text.x = element_text(angle = 45, hjust = 1))
@@ -285,23 +285,22 @@ function(input, output, session) {
       "Columbus Circle/ Union Station" = "Union Station is the busiest start station for Capital Bike users. It is also one of the busiest train stations in the United States. In Union Station, you can find an assortment of shops and food options. Nearby to Union station, you can visit the U.S. Capitol, explore the different Smithsonian museums like the National Museum of Natural History or the National Museum of American History, appriciate artwork at the National Gallery of Art, wander through the National Postal Museum, or visit the Library of Congress- all just a quick bike ride away!",
       "New Hampshire Ave & T St NW" = "This station is consistently one of the buisiest stations for Capital Bikeshare users. Close to Dupont Cirlce, this staion is also near The Phillips Collection – a world-renowned art museum with works by Picasso, Rothko, and Van Gogh. From here, the White House is also very accesible by bike.",
       "15th & P St NW" = "From this station, Logan Circle is just a few blocks away. This residential area has a beautiful public park in the very center and is surrounded by Victorian houses. It lends itself to a lazy Sunday afternoon stroll and has cafes such as The Roasted Boon Co. and Slipstream. If you're looking for a bike destination, try The Washington National Cathedral, a DC architectural landmark, which is only a 15 minute bike ride way.",
-      "5th & K St NW" = "In the heart of downtown, this station is close to Penn Quarter. Here, you can visit the National Portrait Gallery, the Smithsonian American Art Museum, and the Capital One Arena to catch a Washington Wizards game or a concert. Bike west to reach the Layfaette park.",
+      "5th & K St NW" = "In the heart of downtown, this station is close to Penn Quarter. Here, you can visit the National Portrait Gallery, the Smithsonian American Art Museum, and the Capital One Arena to catch a Washington Wizards game or a concert. Bike 7 minutes west to reach Lafayette park.",
       "1st & M St NE" = "Union Market is closeby to this station and includes a trendy food hub with local eateries and vendors. It's also close to the H Street Corridor which has great nightlife. Pick up a bike and ride 10 minutes to the Atlas District- DC's arts and entertainment neighborhood- or head west towards the U.S. Capitol and explore the the Library of Congress.",
       "14th & V St NW" = "This station is in the historic U Street Corridor, where you can find American cultural landmarks. Visit the African American Civil War Museum and iconic jazz venues like the 9:30 Club. From here, cycle toward the National Mall and visit monuments like the Washington Monument and the U.S. Capitol.",
       "14th & R St NW" = "A short distance from the trendy Logan Circle neighborhood, this area features excellent restaurants, local shops, and beautiful Victorian row houses. Bike down to the National Mall or head toward the Dupont Circle area, known for its shops, cafes, and vibrant community.",
       "17th & Corcoran St NW" = "In the Dupont Circle neighborhood, this station is close to The Phillips Collection – a world-renowned art museum with works by Picasso, Rothko, and Van Gogh -  and the many cafes and shops around Dupont Circle. The Smithsonian Museums and the National Gallery of Art are a short 5-10 minute ride away.",
-      "8th & O St NW" = "This station is near the Shaw neighborhood, known for its rich African American history and revitalized community. The historic Howard Theatre and the African American Civil War Memorial are within walking distance. Bike south towards the National Mall to see the monuments, or bike to the vibrant U Street Corridor for its nightlife and cultural spots and drop your bike at the 14th & V St NW station.",
-      "Eastern Market Metro/ Pennsylvania Ave & 8th St SE" = "Eastern Market is one of DC's oldest markets, where you can shop for fresh produce, local meats, and local art. Nearby, you’ll find the vibrant Barracks Row and the historic Capitol Hill neighborhood.
-Suggested Bike Ride: Bike towards the National Mall, or head north to the U.S. Capitol and the Library of Congress.",
-      "Massachusetts Ave & Dupont Circle NW" = "TBD",
-      "Massachusetts Ave & Dupont Circle NW" = "TBD",
-      "Jefferson Memorial" = "TBD",
-      "Smithsonia-National Mall/ Jefferson Dr & 12th St SW" = "TBD",
-      "Lincoln Memorial" = "TBD",
-      "Henry Bacon Dr & Lincoln Memorial Circle NW" = "TBD",
-      "4th St & Madison Dr NW" = "TBD",
-      "M St & Delaware Ave NE" = "TBD",
-      "Adams Mill & Columbia Rd NW" = "TBD"
+      "8th & O St NW" = "This station is near the Shaw neighborhood, known for its rich African American history and revitalized community. The historic Howard Theatre and the African American Civil War Memorial are within walking distance. Bike south towards the National Mall to see the monuments, or bike to the U Street Corridor for its nightlife and drop your bike at the 14th & V St NW station.",
+      "Eastern Market Metro/ Pennsylvania Ave & 8th St SE" = "Eastern Market is one of DC's oldest markets, where you can shop for fresh produce, local meats, and even handmade art. Nearby, you’ll find Barracks Row and the historic Capitol Hill neighborhood.Bike towards the National Mall, or head north to the U.S. Capitol and the Library of Congress.",
+      "Massachusetts Ave & Dupont Circle NW" = "Around Dupont Circle, you'll find cafes, art galleries, and unique boutiques. Dupont Circle itself hosts beautuil gardens you are welcome to explore. The White House is a 7 minute bike ride away from Dupont Cirlce.",
+      "Jefferson Memorial" = "The Jefferson Memorial is a neoclassical monument depicting Thomas Jefferson, a bit removed from the other monuments at the National Mall. Admire the views of the Tidal Basin and the Washington Monument. Bike around the Tidal Basin, or visit the nearby Martin Luther King Jr. Memorial and Franklin Delano Roosevelt Memorial. The Lincoln Memorial and the National World War II Memorial are a 5 minute bike ride away.",
+      "Smithsonia-National Mall/ Jefferson Dr & 12th St SW" = "From this station, visit the National Museum of American History, National Museum of Natural History, and National Air and Space Museum. Walk through the National Mall and see the Washington Monument. Just a half mile away is the Hirshhorn Museum and Sculpture Garden, which is only 3 minutes away by bike.",
+      "Lincoln Memorial" = "Visit the Lincoln Memorial and overlook the Reflecting Pool and Washington Monument.
+Walk along the National Mall and visit other nearby monuments like the Vietnam Veterans Memorial and the Korean War Veterans Memorial.The National World War II Memorial is a 3 minute bike ride east, and the White House and Lafayette Park are just 10 minutes north.",
+      "Henry Bacon Dr & Lincoln Memorial Circle NW" = "Similar to the Lincoln Memorial station, you can explore the monument and the surrounding area. This is a great starting point for a bike ride around the Tidal Basin or along the National Mall, 3 minutes east by bike.",
+      "4th St & Madison Dr NW" = "This station is located near the National Gallery of Art. Stop by the National Archives to see the original U.S. Constitution, Bill of Rights, and Declaration of Independence. You can bike to the Smithsonian Institution or The National Gallery of Art Sculpture Garden, both 3 minutes away by bike.",
+      "M St & Delaware Ave NE" = "From here, explore the Union Market district with its trendy food vendors and local shops and boutiques. Ride through the beautiful Capitol Hill neighborhood and admire the historic homes. Union station is a 5 minute ride away.",
+      "Adams Mill & Columbia Rd NW" = "A bit way from city center, visit the Adams Morgan neighborhood, known for its diverse cultural scene and great nightlife. 8 minutes away by bike, The National Zoo is a free and family-friendly destination with hundreds of animals and exhibits."
       
     )
     

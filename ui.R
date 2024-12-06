@@ -22,7 +22,7 @@ ui = navbarPage("Capital Bikes",
                              p("This Shiny app is designed to help users find bike stations, view how weather trends impact bike usage, and see the most popular stations city bikers use each month. 
          Use the tabs to navigate between features, and customize plots using the controls."),
                              p("The Bike Station Map tab allows you to find your desired station as well as the number of bike docks. The Weather Trends tab allows you to explore data using interactive sliders, and the Station Frequency tab 
-         gives information of the top 10 most started from stations every month. Our data is from the year 2023"),
+         gives information of the top 10 most started from stations every month and things to do at those stations. Our data is from the year 2023"),
                              plotOutput("plot900")
                            )
                          
@@ -120,12 +120,12 @@ tags$style(HTML("
                               label = h3("Enter Station Name"),
                               placeholder = "Type a station name here..."
                             ),
-                            h3("Station Details"),
+                            h3("Station Details:"),
                             verbatimTextOutput("stationBlurb"),
                           ),
                           mainPanel(
                             h3("Start Station Frequency"),
-                            p("This tab allows you to compare the top 10 most frequented start stations customers used each month. This is meant to help new bike users understand which stations are popular throughout the city. You'll find that Union Station was the most popular station to start biking from, with it being used the most frequently 11 out of 12 months of the year in 2023. Watch as the values get higher throughout the middle of the year, reaching a high of 5,340 starts from Union Station in October, 2023."),
+                            p("This tab allows you to compare the top 10 most frequented start stations customers used each month. This is meant to help new bike users understand which stations are popular throughout the city. You'll find that Union Station was the most popular station to start biking from, with it being used the most frequently 11 out of 12 months of the year in 2023. Watch as the values get higher throughout the middle of the year, reaching a high of 5,340 starts from Union Station in October, 2023. If you're looking for reccomended activities and destinations for a specific station, just type in the station of your choosing and read up."),
                             plotlyOutput("selectedfreq", height="800px"),
                           )
                         )
