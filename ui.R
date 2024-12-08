@@ -18,6 +18,7 @@ ui = navbarPage("Capital Bikes",
                          
                           
                            mainPanel(
+                             img(src = "CapitalBikeshareStationDockedBikes.jpg", height="100%", width="100%", align = "left"),
                              h3("About Our Capital Bikes App"),
                              p("This Shiny app is designed to help users find bike stations, view how weather trends impact bike usage, and see the most popular stations city bikers use each month. 
          Use the tabs to navigate between features, and customize plots using the controls."),
