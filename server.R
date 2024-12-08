@@ -15,21 +15,21 @@ function(input, output, session) {
   
   filtered_date_data <- reactive({
     weather_data[weather_data$Date >= input$date_slider[1] &
-                        weather_data$Date <= input$date_slider[2], ]
+                   weather_data$Date <= input$date_slider[2], ]
   })
   
   filtered_temp_data <- reactive({
     weather_data[weather_data$Tempavg >= input$temp_slider[1] &
-                        weather_data$Tempavg <= input$temp_slider[2], ]
+                   weather_data$Tempavg <= input$temp_slider[2], ]
   })
   
   
   output$dateduration <- renderPlotly({
     if(input$plotType=="p"){
-    plot1=ggplot(filtered_date_data(), aes(x=Date, y=Duration)) + geom_point(color="red") + 
-      geom_smooth(method = "loess", color = "black", linewidth = 0.8, se = FALSE) +
-      labs(title="Date vs Ride Duration", x= "Date", y= "Average Ride Duration (mins)") +
-      theme_minimal()
+      plot1=ggplot(filtered_date_data(), aes(x=Date, y=Duration)) + geom_point(color="red") + 
+        geom_smooth(method = "loess", color = "black", linewidth = 0.8, se = FALSE) +
+        labs(title="Date vs Ride Duration", x= "Date", y= "Average Ride Duration (mins)") +
+        theme_minimal()
     }
     else if(input$plotType=="b"){
       plot1=ggplot(filtered_date_data(), aes(x = Date, y = Duration)) + 
@@ -44,22 +44,22 @@ function(input, output, session) {
   
   output$tempduration <- renderPlotly({
     if(input$plotType=="p"){
-    plot2=ggplot(filtered_temp_data(), aes(Tempavg, Duration)) + geom_point (color="red") +
-      geom_smooth(method = "loess", color = "black", linewidth = 0.8, se = FALSE) +
-      labs(title="Average Temperature vs Ride Duration", x= "Average Temperature", y= "Average Ride Duration (mins)") +
-      theme_minimal()
+      plot2=ggplot(filtered_temp_data(), aes(Tempavg, Duration)) + geom_point (color="red") +
+        geom_smooth(method = "lm", color = "black", linewidth = 0.8, se = FALSE) +
+        labs(title="Average Temperature vs Ride Duration", x= "Average Temperature", y= "Average Ride Duration (mins)") +
+        theme_minimal()
     }
     else if(input$plotType=="b"){
       plot2=ggplot(filtered_temp_data(), aes(x = Tempavg, y = Duration)) +
-        geom_col(fill = "red") +
-        geom_smooth(method = "loess", color = "black", linewidth = 0.8, se = FALSE) +
+        geom_bar(stat = "identity", fill = "red") +
+        geom_smooth(method = "lm", color = "black", linewidth = 0.8, se = FALSE) +
         labs(title = "Average Temperature vs Ride Duration", x = "Average Temperature", y = "Average Ride Duration (mins)") +
         theme_minimal()+
         theme(axis.text.x = element_text(angle = 45, hjust = 1))
     }
     ggplotly(plot2)
   })
-    
+  
   weather <- read.csv("mergedweatherdata.csv")
   
   rain <- filter(weather, Preciptype == "rain")
@@ -95,17 +95,17 @@ function(input, output, session) {
   
   
   janfreq <- readRDS("2023-station-frequency/202301_station_freq.rds") %>%
-  filter(start_station_name!="")%>%
-  arrange(desc(n)) %>%
-  slice_head(n=10)
+    filter(start_station_name!="")%>%
+    arrange(desc(n)) %>%
+    slice_head(n=10)
   janfreq$start_station_name=gsub(" / ","/\n",janfreq$start_station_name,fixed=T)
   janfreq$start_station_name=gsub(" & "," &\n",janfreq$start_station_name,fixed=T)
   janfreq$start_station_name = factor(janfreq$start_station_name,levels=janfreq$start_station_name)
   
   febfreq <- readRDS("2023-station-frequency/202302_station_freq.rds") %>%
-  filter(start_station_name!="")%>%
-  arrange(desc(n)) %>%
-  slice_head(n=10)
+    filter(start_station_name!="")%>%
+    arrange(desc(n)) %>%
+    slice_head(n=10)
   febfreq$start_station_name=gsub(" / ","/\n",febfreq$start_station_name,fixed=T)
   febfreq$start_station_name=gsub(" & "," &\n",febfreq$start_station_name,fixed=T)
   febfreq$start_station_name = factor(febfreq$start_station_name,levels=febfreq$start_station_name)
@@ -197,7 +197,7 @@ function(input, output, session) {
         labs(title = "January Top 10 Start Stations", x = "Station Name", y = "Number of Pick-Ups") +
         theme(axis.text.x = element_text(angle = 60, hjust = 1))
       ggplotly(plot3)
-      }
+    }
     else if (input$selectMonth == "February") {
       plot4 <- ggplot(febfreq, aes(start_station_name, n)) +
         geom_col(fill="red") +
@@ -291,20 +291,19 @@ function(input, output, session) {
       "14th & R St NW" = "A short distance from the trendy Logan Circle neighborhood, this area features excellent restaurants, local shops, and beautiful Victorian row houses. Bike down to the National Mall or head toward the Dupont Circle area, known for its shops, cafes, and vibrant community.",
       "17th & Corcoran St NW" = "In the Dupont Circle neighborhood, this station is close to The Phillips Collection – a world-renowned art museum with works by Picasso, Rothko, and Van Gogh -  and the many cafes and shops around Dupont Circle. The Smithsonian Museums and the National Gallery of Art are a short 5-10 minute ride away.",
       "8th & O St NW" = "This station is near the Shaw neighborhood, known for its rich African American history and revitalized community. The historic Howard Theatre and the African American Civil War Memorial are within walking distance. Bike south towards the National Mall to see the monuments, or bike to the U Street Corridor for its nightlife and drop your bike at the 14th & V St NW station.",
-      "Eastern Market Metro/ Pennsylvania Ave & 8th St SE" = "Eastern Market is one of DC's oldest markets, where you can shop for fresh produce, local meats, and even handmade art. Nearby, you’ll find Barracks Row and the historic Capitol Hill neighborhood.Bike towards the National Mall, or head north to the U.S. Capitol and the Library of Congress.",
+      "Eastern Market Metro/ Pennsylvania Ave & 8th St SE" = "Eastern Market is one of DC's oldest markets. Here, you can shop for fresh produce, local meats, and even handmade art. Nearby, you’ll find Barracks Row and the historic Capitol Hill neighborhood. Bike towards the National Mall, or head north to the U.S. Capitol and the Library of Congress.",
       "Massachusetts Ave & Dupont Circle NW" = "Around Dupont Circle, you'll find cafes, art galleries, and unique boutiques. Dupont Circle itself hosts beautuil gardens you are welcome to explore. The White House is a 7 minute bike ride away from Dupont Cirlce.",
-      "Jefferson Memorial" = "The Jefferson Memorial is a neoclassical monument depicting Thomas Jefferson, a bit removed from the other monuments at the National Mall. Admire the views of the Tidal Basin and the Washington Monument. Bike around the Tidal Basin, or visit the nearby Martin Luther King Jr. Memorial and Franklin Delano Roosevelt Memorial. The Lincoln Memorial and the National World War II Memorial are a 5 minute bike ride away.",
-      "Smithsonia-National Mall/ Jefferson Dr & 12th St SW" = "From this station, visit the National Museum of American History, National Museum of Natural History, and National Air and Space Museum. Walk through the National Mall and see the Washington Monument. Just a half mile away is the Hirshhorn Museum and Sculpture Garden, which is only 3 minutes away by bike.",
-      "Lincoln Memorial" = "Visit the Lincoln Memorial and overlook the Reflecting Pool and Washington Monument.
-Walk along the National Mall and visit other nearby monuments like the Vietnam Veterans Memorial and the Korean War Veterans Memorial.The National World War II Memorial is a 3 minute bike ride east, and the White House and Lafayette Park are just 10 minutes north.",
-      "Henry Bacon Dr & Lincoln Memorial Circle NW" = "Similar to the Lincoln Memorial station, you can explore the monument and the surrounding area. This is a great starting point for a bike ride around the Tidal Basin or along the National Mall, 3 minutes east by bike.",
-      "4th St & Madison Dr NW" = "This station is located near the National Gallery of Art. Stop by the National Archives to see the original U.S. Constitution, Bill of Rights, and Declaration of Independence. You can bike to the Smithsonian Institution or The National Gallery of Art Sculpture Garden, both 3 minutes away by bike.",
-      "M St & Delaware Ave NE" = "From here, explore the Union Market district with its trendy food vendors and local shops and boutiques. Ride through the beautiful Capitol Hill neighborhood and admire the historic homes. Union station is a 5 minute ride away.",
+      "Jefferson Memorial" = "The Jefferson Memorial is a neoclassical monument depicting Thomas Jefferson, a bit removed from the other monuments at the National Mall. Admire the the Tidal Basin and the Washington Monument from a distance. Bike around the Tidal Basin, or bike to the nearby Martin Luther King Jr. Memorial and Franklin Delano Roosevelt Memorial, also removed from the National Mall. The Lincoln Memorial and the National World War II Memorial are a 5 minute bike ride away.",
+      "Smithsonia-National Mall/ Jefferson Dr & 12th St SW" = "From this station, go to the National Museum of American History, National Museum of Natural History, and National Air and Space Museum- all for free. Walk through the National Mall and see the Washington Monument. Just a half mile away is the Hirshhorn Museum and Sculpture Garden, a well-known art museum, which is only 3 minutes away by bike.",
+      "Lincoln Memorial" = "The famous Lincoln Memorial is at this station. Enjoy the Reflecting Pool and Washington Monument, walk along the National Mall and visit other nearby monuments, like the Vietnam Veterans Memorial and the Korean War Veterans Memorial.The National World War II Memorial is a 3 minute bike ride east, and the White House and Lafayette Park are just 10 minutes north.",
+      "Henry Bacon Dr & Lincoln Memorial Circle NW" = "Similar to the Lincoln Memorial station, you can explore the monument and the surrounding area. This is a great starting point for a bike ride around the Tidal Basin or along the National Mall.",
+      "4th St & Madison Dr NW" = "This station is located near the National Gallery of Art. Stop by the National Archives to see the original U.S. Constitution, Bill of Rights, and Declaration of Independence! You can bike to the Smithsonian Institution or The National Gallery of Art Sculpture Garden, both 3 minutes away by bike.",
+      "M St & Delaware Ave NE" = "From here, explore the Union Market district with its hip food vendors and local shops and boutiques. Ride through the beautiful Capitol Hill neighborhood and admire the historic homes. Union station is a 5 minute ride away.",
       "Adams Mill & Columbia Rd NW" = "A bit way from city center, visit the Adams Morgan neighborhood, known for its diverse cultural scene and great nightlife. 8 minutes away by bike, The National Zoo is a free and family-friendly destination with hundreds of animals and exhibits."
       
     )
     
-   
+    
     station <- trimws(tolower(input$stationName))  
     matchedStation <- names(stationBlurbs)[tolower(names(stationBlurbs)) == station]
     
@@ -314,29 +313,22 @@ Walk along the National Mall and visit other nearby monuments like the Vietnam V
       stationBlurbs[[matchedStation]]
     }
   })
-    
-    
-    
+  
+  
+  
   
   # this solves merge conflict
   source("stationSelector.r")
-  # source("fixedbikerouter.r")
-  
-  stations <- read.csv("bike_numbers.csv")
+  # source("bikeRouter.r")
   
   output$stationSelector <- mySERVERd(input, output)
-  # output$fixedbikerouter <- myRouter(input, output)
+  # output$bikeRouter <- myRouter(input, output)
   
 }
-  
-  
-# reuploaded version 12/2/2024
 
-  
-  #
 
-  
- 
+
+
 
 
 

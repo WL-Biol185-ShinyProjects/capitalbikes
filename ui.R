@@ -23,7 +23,6 @@ ui = navbarPage("Capital Bikes",
          Use the tabs to navigate between features, and customize plots using the controls."),
                              p("The Bike Station Map tab allows you to find your desired station as well as the number of bike docks. The Weather Trends tab allows you to explore data using interactive sliders, and the Station Frequency tab 
          gives information of the top 10 most started from stations every month and things to do at those stations. Our data is from the year 2023"),
-                             plotOutput("plot900")
                            )
                          
                 ),
@@ -36,13 +35,6 @@ ui = navbarPage("Capital Bikes",
                           choices = stations$name,
                         )
                       ),
-
-# 
-#                         hr(),
-#                         fluidRow(column(3, verbatimTextOutput("value")))
-# 
-# 
-#                         ),
                         mainPanel(
                           h3("Interactive Bike Station Map"),
                           p("Use this dropdown selecter to locate the station of your choosing. The larger green dots signify stations with more bikes, and the smaller red dots signify stations with less bikes."),
@@ -94,17 +86,16 @@ ui = navbarPage("Capital Bikes",
 
                          ),
                          mainPanel(
-                           plotOutput("plot100")
                          )
                        )
            ),
 tags$style(HTML("
     #stationBlurb {
-      white-space: pre-wrap; /* Allows for multiline text */
-      word-wrap: break-word; /* Ensures long words break appropriately */
-      overflow: visible; /* Ensures the box does not scroll */
-      height: auto; /* Height adjusts based on the content */
-      max-height: none; /* Ensure there is no maximum height */
+      white-space: pre-wrap; 
+      word-wrap: break-word;
+      overflow: visible;
+      height: auto; 
+      max-height: none;
     }
   ")),
                tabPanel("Station Frequency",
@@ -155,7 +146,3 @@ tags$style(HTML("
  )
 
 
-# reuploaded version 12/2/2024
-
-
-##
