@@ -24,6 +24,7 @@ ui = navbarPage("Capital Bikes",
          Use the tabs to navigate between features, and customize plots using the controls."),
                              p("The Bike Station Map tab allows you to find your desired station as well as the number of bike docks. The Weather Trends tab allows you to explore data using interactive sliders, and the Station Frequency tab 
          gives information of the top 10 most started from stations every month and things to do at those stations. Our data is from the year 2023"),
+                             p("This data was taken from the Kaggle data set 'Capital bike share dataset 2020/05 ~ 2024/ 08' found at https://www.kaggle.com/datasets/taweilo/capital-bikeshare-dataset-202005202408."),
                            )
                          
                 ),
