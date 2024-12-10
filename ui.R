@@ -48,7 +48,7 @@ ui = navbarPage("Capital Bikes",
               tabPanel("Weather Trends",
                         sidebarLayout(
                             sidebarPanel(
-                              radioButtons("plotType", "Plot type",
+                              radioButtons("plotType", "Date vs Ride Duration Plot type",
                                            c("Scatter"="p", "Bar Graph"="b")
                                 ),
                               sliderInput(

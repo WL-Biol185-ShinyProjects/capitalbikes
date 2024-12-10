@@ -43,20 +43,20 @@ function(input, output, session) {
   })
   
   output$tempduration <- renderPlotly({
-    if(input$plotType=="p"){
+    # if(input$plotType=="p"){
       plot2=ggplot(filtered_temp_data(), aes(Tempavg, Duration)) + geom_point (color="red") +
         geom_smooth(method = "loess", color = "black", linewidth = 0.8, se = FALSE) +
         labs(title="Average Temperature vs Ride Duration", x= "Average Temperature", y= "Average Ride Duration (mins)") +
         theme_minimal()
-    }
-    else if(input$plotType=="b"){
-      plot2=ggplot(filtered_temp_data(), aes(x = Tempavg, y = Duration)) +
-        geom_bar(stat = "identity", fill = "red") +
-        geom_smooth(method = "loess", color = "black", linewidth = 0.8, se = FALSE) +
-        labs(title = "Average Temperature vs Ride Duration", x = "Average Temperature", y = "Average Ride Duration (mins)") +
-        theme_minimal()+
-        theme(axis.text.x = element_text(angle = 45, hjust = 1))
-    }
+    # }
+    # else if(input$plotType=="b"){
+    #   plot2=ggplot(filtered_temp_data(), aes(x = Tempavg, y = Duration)) +
+    #     geom_bar(stat = "identity", fill = "red") +
+    #     geom_smooth(method = "loess", color = "black", linewidth = 0.8, se = FALSE) +
+    #     labs(title = "Average Temperature vs Ride Duration", x = "Average Temperature", y = "Average Ride Duration (mins)") +
+    #     theme_minimal()+
+    #     theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    # }
     ggplotly(plot2)
   })
   
