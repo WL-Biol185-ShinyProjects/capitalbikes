@@ -3,7 +3,7 @@ title: "cleaningitmore.Rmd"
 output: html_document
 ---
 
-code for getting just the bike time and then averaging it by the day per month
+#code for getting just the bike time and then averaging it by the day per month
 ```{r}
 janbikedatacleantimedif$ended_at <- NULL
 janbikedatacleantimedif$start_station_name <- NULL

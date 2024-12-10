@@ -3,6 +3,8 @@ title: "streaming.Rmd"
 output: html_document
 ---
 
+#making large csv files in rds files
+
 ```{r}
 fileNames <- list.files("monthly-data", full.names = TRUE)
 
