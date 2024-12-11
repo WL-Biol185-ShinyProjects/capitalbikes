@@ -386,7 +386,7 @@ function(input, output, session) {
     elevation_change <- diff(elevation_data$elevation)
 
     bikeIcon <- makeIcon(
-      iconUrl = "~/fixedcapitalbikes/bikeicon.jpeg",
+      iconUrl = "https://i.postimg.cc/4xyRN8t9/bikeicon.png",
       iconWidth = 30, iconHeight = 30
     )
 
