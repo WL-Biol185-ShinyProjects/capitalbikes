@@ -7,6 +7,8 @@ library(tidyverse)
 library(dplyr)
 library(leaflet)
 library(mapsapi)
+library(gmapsdistance)
+library(elevatr)
 
 # Define UI
 
@@ -45,6 +47,21 @@ ui = navbarPage("Capital Bikes",
                       )
                     )
            ),
+           
+           tabPanel("Bike Router",
+                    sidebarLayout(
+                      sidebarPanel(
+                        selectInput("origin", "Origin", choices = c("Select a station" = "", sort(stations$name))),
+                        selectInput("destination", "Destination", choices = c("Select a station" = "", sort(stations$name))),
+                        actionButton("route", "Plan Route"),
+                        hr(),
+                      ),
+                      mainPanel(
+                        leafletOutput("map")
+                      )
+                    )
+           ),
+           
               tabPanel("Weather Trends",
                         sidebarLayout(
                             sidebarPanel(
@@ -76,21 +93,7 @@ ui = navbarPage("Capital Bikes",
                               )
                             )
            ),
-             tabPanel("Bike Router",
-                       sidebarLayout(
-                         sidebarPanel(
-                           selectInput("select3", label = h3("Select box"),
-                                       choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),
-                                       selected = 1),
-
-                           hr(),
-
-
-                         ),
-                         mainPanel(
-                         )
-                       )
-           ),
+           
 tags$style(HTML("
     #stationBlurb {
       white-space: pre-wrap; 
@@ -123,27 +126,6 @@ tags$style(HTML("
                           )
                         )
            ),
-               # tabPanel("Bike Router",
-               #          # titlePanel("Bike Stations in Washington, D.C."),
-               #          sidebarLayout(
-               #            sidebarPanel(
-               #              selectInput(
-               #                "origin",
-               #                label = "Origin Station",
-               #                choices = stations$name,
-               #              ),
-               #              selectInput(
-               #                "destination",
-               #                label = "Destination Station",
-               #                choices = stations$name,
-               #              ),
-               #              actionButton("route", "Get Route")
-               #            ),
-               #            mainPanel(
-               #              leafletOutput("stationMap")
-               #            )
-               #          )
-               # )
 
  )
 

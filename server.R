@@ -6,6 +6,8 @@ library(ggplot2)
 library(plotly)
 library(tidyverse)
 library(dplyr)
+library(gmapsdistance)
+library(elevatr)
 
 
 function(input, output, session) {
@@ -319,16 +321,104 @@ function(input, output, session) {
   
   # this solves merge conflict
   source("stationSelector.r")
-  # source("bikeRouter.r")
+  output$stationSelect <- mySERVERd(input, output)
+
+  # Bike router server logic here:
+  stations <- read.csv("total_bikes.csv")
   
-  output$stationSelector <- mySERVERd(input, output)
-  # output$bikeRouter <- myRouter(input, output)
+  stations$color <- ifelse(stations$total_bikes_available <= 5, "red",
+                           ifelse(stations$total_bikes_available <= 15, "orange", "green"))
   
+  output$map <- renderLeaflet({
+    leaflet() %>%
+      addProviderTiles(provider = providers$Esri.WorldImagery, group = "Satellite") %>%
+      addTiles() %>%
+      addLayersControl(
+        baseGroups = c("Streets", "Satellite"),
+        overlayGroups = c("Markers"),
+        position = "topleft"
+      ) %>%
+      
+      setView(lng = mean(stations$longitude), lat = mean(stations$latitude), zoom = 15)
+  })
+
+  observeEvent(input$route, {
+    origin <- stations %>% filter(name == input$origin) %>% select(longitude, latitude)
+    destination <- stations %>% filter(name == input$destination) %>% select(longitude, latitude)
+
+
+    directions <- mp_directions(
+      origin = as.numeric(origin),
+      destination = as.numeric(destination),
+      key = Sys.getenv("MAPS_API"),
+      mode = "bicycling",
+      alternatives = FALSE
+    )
+
+    route <- mp_get_routes(directions)
+
+    origin_coordinates <- paste(origin$latitude, origin$longitude, sep = ",")
+    destination_coordinates <- paste(destination$latitude, destination$longitude, sep = ",")
+
+    result <- gmapsdistance(
+      origin = origin_coordinates,
+      destination = destination_coordinates,
+      mode = "bicycling",
+      key = Sys.getenv("MAPS_API")
+    )
+
+    travel_time_seconds <- result$Time
+    travel_time <- sprintf("%d hours %d minutes", travel_time_seconds %/% 3600, (travel_time_seconds %% 3600) %/% 60)
+
+
+
+
+    # Elevation data for origin and destination
+    elevation_data <- get_elev_point(
+      data.frame(
+        x = c(origin$longitude, destination$longitude),
+        y = c(origin$latitude, destination$latitude)
+      ),
+      prj = "EPSG:4326",
+      units = "feet"
+    )
+
+    elevation_change <- diff(elevation_data$elevation)
+
+    bikeIcon <- makeIcon(
+      iconUrl = "~/fixedcapitalbikes/bikeicon.jpeg",
+      iconWidth = 30, iconHeight = 30
+    )
+
+    leafletProxy("map") %>%
+      clearShapes() %>%
+      addPolylines(data = route, color = "blue", weight = 8) %>%
+      addMarkers(
+        data = route,
+        lng = c(origin$longitude, destination$longitude),
+        lat = c(origin$latitude, destination$latitude),
+        icon = bikeIcon
+      ) %>%
+      removeControl("elevation_info") %>% 
+      addControl(
+        html = paste("Estimated travel time:", travel_time,
+                     "<br>Elevation change:", round(elevation_change, 2), "feet"),
+        position = "topright",
+        layerId = "elevation_info" 
+      ) %>%
+      fitBounds(
+        lng1 = min(origin$longitude, destination$longitude),
+        lat1 = min(origin$latitude, destination$latitude),
+        lng2 = max(origin$longitude, destination$longitude),
+        lat2 = max(origin$latitude, destination$latitude)
+      )
+  })
+
 }
 
 
 
 
-#
+
 
 

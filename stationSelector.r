@@ -1,4 +1,4 @@
-stations <- read.csv("bike_numbers.csv")
+stations <- read.csv("total_bikes.csv")
 
 # myUId <- tabPanel(
 #   titlePanel("Bike Stations in Washington, D.C."),
@@ -20,8 +20,8 @@ stations <- read.csv("bike_numbers.csv")
 
 mySERVERd <- function(input, output, session) {
   
-  stations$color <- ifelse(stations$num_bikes_available <= 5, "red",
-                           ifelse(stations$num_bikes_available <= 15, "orange", "green"))
+  stations$color <- ifelse(stations$total_bikes_available <= 5, "red",
+                           ifelse(stations$total_bikes_available <= 15, "orange", "green"))
   
 
   output$stationTable <- renderTable({
@@ -38,18 +38,21 @@ mySERVERd <- function(input, output, session) {
       addTiles() %>%
       addCircleMarkers(
         data = stations,
+        clusterOptions = markerClusterOptions(),
         popup = ~paste(
         "<strong>Station Name:</strong>", name, "<br>",
         "<strong>Latitude:</strong>", latitude, "<br>",
         "<strong>Longitude:</strong>", longitude, "<br>",
-        "<strong>Available Bikes:</strong>", num_bikes_available
+        "<strong>Available Regular Bikes:</strong>", num_bikes_available,"<br>",
+        "<strong>Available e-Bikes:</strong>", num_ebikes_available,"<br>",
+        "<strong>Total Available Bikes:</strong>", total_bikes_available
       ),
       
         lat = ~latitude,
         lng = ~longitude,
         group = "Markers",
         color = ~color,
-        radius = ~num_bikes_available
+        radius = ~total_bikes_available
         ) %>%
       
       addLayersControl(
@@ -60,7 +63,7 @@ mySERVERd <- function(input, output, session) {
       setView(
         lng = station_data$longitude,
         lat = station_data$latitude,
-        zoom = 15
+        zoom = 20
       )
   })
 }
