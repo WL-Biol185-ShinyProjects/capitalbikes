@@ -336,7 +336,6 @@ function(input, output, session) {
       addTiles() %>%
       addLayersControl(
         baseGroups = c("Streets", "Satellite"),
-        overlayGroups = c("Markers"),
         position = "topleft"
       ) %>%
       
