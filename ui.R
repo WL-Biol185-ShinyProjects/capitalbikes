@@ -22,10 +22,9 @@ ui = navbarPage("Capital Bikes",
                            mainPanel(
                              img(src = "CapitalBikeshareStationDockedBikes.jpg", height="100%", width="100%", align = "left"),
                              h3("About Our Capital Bikes App"),
-                             p("This Shiny app is designed to help users find bike stations, view how weather trends impact bike usage, and see the most popular stations city bikers use each month. 
-         Use the tabs to navigate between features, and customize plots using the controls."),
-                             p("The Bike Station Map tab allows you to find your desired station as well as the number of bike docks. The Weather Trends tab allows you to explore data using interactive sliders, and the Station Frequency tab 
-         gives information of the top 10 most started from stations every month and things to do at those stations. Our data is from the year 2023"),
+                             p("This Shiny app is designed to help users find bike stations, plan routes between stations, analyze how weather trends impact bike usage, and identify the most popular stations used by city bikers each month. Use the tabs to navigate between features and customize plots using the available controls."),
+                             p("The Bike Station Map tab allows you to find your desired station as well as the number of available bikes at each station. The Bike Router tab creates routes between any two stations. The Weather Trends tab allows you to explore data using interactive sliders, and the Station Frequency tab 
+         gives information of the top 10 most started from stations every month and things to do at those stations. Our data is from the year 2023."),
                              p("This data was taken from the Kaggle data set 'Capital bike share dataset 2020/05 ~ 2024/ 08' found at https://www.kaggle.com/datasets/taweilo/capital-bikeshare-dataset-202005202408."),
                            )
                          
@@ -41,7 +40,7 @@ ui = navbarPage("Capital Bikes",
                       ),
                         mainPanel(
                           h3("Interactive Bike Station Map"),
-                          p("Use this dropdown selecter to locate the station of your choosing. The larger green dots signify stations with more bikes, and the smaller red dots signify stations with less bikes."),
+                          p("Use this dropdown selecter to locate the station of your choosing. The table informs how many normal bikes, e-bikes, and total of normal and e-bikes avalible at every station. The larger green dots signify stations with more bikes, and the smaller red dots signify stations with less bikes."),
                          tableOutput("stationTable"),
                          leafletOutput("stationMap")
                       )
@@ -57,6 +56,8 @@ ui = navbarPage("Capital Bikes",
                         hr(),
                       ),
                       mainPanel(
+                        h3("Interactive Bike Router Map"),
+                        p("Are you trying to get from one place to another but don’t know the way? Do you want to ride to a suggested station based on the fun station descriptions in our ‘Station Frequency’ tab? Just input where you’re starting from and where you want to go, and follow the path our Bike Router plans for you, complete with elevation details."),
                         leafletOutput("map")
                       )
                     )
