@@ -329,6 +329,7 @@ function(input, output, session) {
   stations$color <- ifelse(stations$total_bikes_available <= 5, "red",
                            ifelse(stations$total_bikes_available <= 15, "orange", "green"))
   
+  
   output$map <- renderLeaflet({
     leaflet() %>%
       addProviderTiles(provider = providers$Esri.WorldImagery, group = "Satellite") %>%
@@ -341,7 +342,7 @@ function(input, output, session) {
       
       setView(lng = mean(stations$longitude), lat = mean(stations$latitude), zoom = 15)
   })
-
+  
   observeEvent(input$route, {
     origin <- stations %>% filter(name == input$origin) %>% select(longitude, latitude)
     destination <- stations %>% filter(name == input$destination) %>% select(longitude, latitude)
@@ -371,8 +372,6 @@ function(input, output, session) {
     travel_time <- sprintf("%d hours %d minutes", travel_time_seconds %/% 3600, (travel_time_seconds %% 3600) %/% 60)
 
 
-
-
     # Elevation data for origin and destination
     elevation_data <- get_elev_point(
       data.frame(
@@ -392,14 +391,16 @@ function(input, output, session) {
 
     leafletProxy("map") %>%
       clearShapes() %>%
+      clearMarkers() %>%
+      removeControl("elevation_info") %>% 
       addPolylines(data = route, color = "blue", weight = 8) %>%
       addMarkers(
         data = route,
         lng = c(origin$longitude, destination$longitude),
         lat = c(origin$latitude, destination$latitude),
-        icon = bikeIcon
+        icon = bikeIcon,
+        popup = c("Origin Station", "Destination Station")
       ) %>%
-      removeControl("elevation_info") %>% 
       addControl(
         html = paste("Estimated travel time:", travel_time,
                      "<br>Elevation change:", round(elevation_change, 2), "feet"),
